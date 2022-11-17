@@ -2,12 +2,15 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
+class Genre(models.Model):
+    name = models.CharField(max_length=50)
+
 class Movie(models.Model):
     users_pick = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movies_picked')
     movie_id = models.CharField(max_length=100)
     title  = models.CharField(max_length=100)
     overview = models.TextField()
-    genre  = models.CharField(max_length=50)
+    genre = models.ManyToManyField(Genre, related_name='movies')
     poster_path = models.CharField(max_length=500)
     backdrop_path = models.CharField(max_length=500)
     popularity = models.IntegerField()
