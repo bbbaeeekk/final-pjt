@@ -1,7 +1,14 @@
 <template>
   <div id="app">
     <nav id="navbar-example2" class="navbar px-3 mb-3" style="background-color: #e3f2fd;">
-      <img @click="GoHome" src="./assets/ssafy_logo.png" alt="" style="width:40px" class="col-1">
+      <!-- 메인페이지로 가는 상단 로고 -->
+      <div>
+        <RouterLink :to="{ name: 'HomeView' }">
+          <div class="mx-auto mt-auto">
+            <img width=70px class="neumorph" :class="{grayscale:!isHovering}" @mouseover="isHovering = true" @mouseout="isHovering = false" src="@/assets/ssafy_logo.png" alt="logo to mainpage">
+          </div>
+        </RouterLink>
+      </div>
       <ul class="nav nav-pills">
         <li class="nav-item">
           <router-link to="/" style="text-decoration:none;">홈</router-link> &nbsp;&nbsp;&nbsp;
@@ -24,13 +31,15 @@
 <script>
 export default{
   name:'App',
-  methods: {
-    GoHome() {
-      if (this.$route.path !== '/') {
-        this.$router.push({name:'HomeView'})
-      }
+  computed: {
+
+  },
+  data() {
+    return {
+      isHovering: false
     }
   }
+
 }
 
 
@@ -58,5 +67,11 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.neumorph3 {
+  border-radius: 13px;
+  background: #ececec;
+  box-shadow: inset 11px 11px 19px #acacac, inset -11px -11px 19px #ffffff
 }
 </style>

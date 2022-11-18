@@ -2,7 +2,7 @@
     <div>
         <div class="row row-cols-1 row-cols-md-3 g-4 m-auto" style="width:90%">
             <MovieCard
-            v-for="movie in this.$store.state.MovieDatas"
+            v-for="movie in this.$store.getters.movies"
             :key="movie.id"
             :movie="movie"
             />
@@ -12,24 +12,22 @@
   
   <script>
     // import axios from 'axios';
+    import { mapGetters, mapActions } from 'vuex'
     import MovieCard from '@/components/MovieCard'
-
-    // 여기에 django db에 있는 영화들을 가져오기
 
     export default {
         name: 'MovieView',
+        components: {MovieCard},
         data(){
             return {
-                movieData : null
+
             }
         },
-        components: {
-            MovieCard
+        computed: {
+            ...mapGetters([])
         },
         methods: {
-            getMovies(){
-                this.$store.dispatch('getMovies')
-            },
+            ...mapActions(['getMovies',])
         },
         created(){
             this.getMovies()
