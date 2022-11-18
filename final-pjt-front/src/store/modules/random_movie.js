@@ -3,25 +3,26 @@ import DRF from '@/api/drf'
 
 
 const state = {
-    MovieDatas:[],
+    random_movie:[],
 }
 
 const getters = {
-    movies(state) {
-        return state.MovieDatas
+    random_movies(state) {
+        return state.random_movie
     }
 }
 
 const mutations = {
-    GET_MOVIES(state, movieDatas) {
-        state.MovieDatas = movieDatas
+    RANDOM_MOVIES(state, random_movie) {
+        state.random_movie = random_movie
     }
 }
 
 const actions = {
-    getMovies({ commit }) {
+    random_Movies({ commit }) {
+        console.log('hi')
         axios.get(DRF.URL + DRF.ROUTES.get_movie_list())
-        .then(res => commit('GET_MOVIES', res.data))
+        .then(res => commit('RANDOM_MOVIES', res.data))
         .catch(err => console.error(err))
       }
 }
