@@ -32,11 +32,21 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'movies',
+    'articles',
     'accounts',
 
     'rest_framework',
-
     'corsheaders',
+
+    'dj_rest_auth',
+    'rest_framework.authtoken',
+
+    # registration
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration', 
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -137,3 +147,16 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated', # 인증된 사용자만 접근 가능
+        # 'rest_framework.permissions.IsAdminUser', # 관리자만 접근 가능
+        'rest_framework.permissions.AllowAny', # 누구나 접근 가능
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
