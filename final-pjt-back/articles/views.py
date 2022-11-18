@@ -1,0 +1,109 @@
+from django.shortcuts import get_object_or_404, render
+from django.db.models import Count
+
+from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework import status
+
+from .models import Article, ArticleComment
+from .serializers import (
+    ArticleSerializer, 
+    ArticleListSerializer,
+    CommentSerializer,
+)
+
+
+@api_view(['GET', 'POST'])
+@login_required
+# (login_url='/accounts/login')
+def article_index_create(request):
+
+    if request.method == 'GET':
+        # comment 개수 추가
+        articles = Article.objects.annotate(
+            comment_count=Count('comments', distinct=True),
+            like_count=Count('article_likes', distinct=True)
+        ).order_by('-pk')
+        serializer = ArticleListSerializer(articles, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        serializer = ArticleSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def article_detail_update_delete(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    
+    if request.method == 'GET':
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        if request.user == article.user:
+            serializer = ArticleSerializer(instance=article, data=request.data)    
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data)
+
+    elif request.method == 'DELETE':
+        if request.user == article.user:
+            article.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    
+
+@api_view(['POST'])
+def like_article(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    user = request.user
+    
+    if article.article_likes.filter(pk=user.pk).exists():
+        article.article_likes.remove(user)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+    else:
+        article.article_likes.add(user)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+
+
+
+@api_view(['POST',])
+def comment_create(request, article_pk):
+    # user = request.user
+    article = get_object_or_404(Article, pk=article_pk)
+
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(article=article, user=request.user)
+        comments = article.comments.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+@api_view(['PUT', 'DELETE',])
+def comment_update_delete(request, article_pk, comment_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    comment = get_object_or_404(ArticleComment, pk=comment_pk)
+
+    if request.method == 'PUT':
+        if request.user == comment.user:
+            serializer = CommentSerializer(instance=comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data)
+
+    elif request.method == 'DELETE':
+        if request.user == comment.user:
+            comment.delete()
+            comments = article.comments.all()
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data)
+
