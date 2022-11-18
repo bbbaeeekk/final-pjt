@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import User
 from .serializers import ProfileSerializer
-from movies.serializers import MovieListSerializer, ReviewSerializer
-from movies.models import Review
+from movies.serializers import MovieListSerializer, ArticleSerializer
+from movies.models import Article
 
 
 # Create your views here.
@@ -31,8 +31,8 @@ def follow(request, username):
 def newsfeed(request):
     me = request.user
     followings = me.followings.all()
-    reviews = Review.objects.filter(user__in=followings).order_by('-updated_at')
-    serializer = ReviewSerializer(reviews, many=True)
+    articles = Article.objects.filter(user__in=followings).order_by('-updated_at')
+    serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -43,16 +43,16 @@ def wish_movies(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def my_reviews(request):
+def my_articles(request):
     me = request.user
-    my_reviews = me.reviews.order_by('-updated_at')
-    serializer = ReviewSerializer(my_reviews, many=True)
+    my_articles = me.articles.order_by('-updated_at')
+    serializer = ArticleSerializer(my_articles, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
-def other_reviews(request, username):
+def other_articles(request, username):
     you = get_object_or_404(User, username=username)
-    your_reviews = Review.objects.filter(user=you).order_by('-updated_at')
-    serializer = ReviewSerializer(your_reviews, many=True)
+    your_articles = Article.objects.filter(user=you).order_by('-updated_at')
+    serializer = ArticleSerializer(your_articles, many=True)
     return Response(serializer.data)
