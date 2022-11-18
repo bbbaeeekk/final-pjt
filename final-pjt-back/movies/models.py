@@ -15,7 +15,7 @@ class Movie(models.Model):
     backdrop_path = models.CharField(max_length=500)
     popularity = models.IntegerField()
     release_date = models.CharField(max_length=100)
-    vote_avg = models.IntegerField()
+    vote_avg = models.FloatField()
     vote_cnt = models.IntegerField()
 
 

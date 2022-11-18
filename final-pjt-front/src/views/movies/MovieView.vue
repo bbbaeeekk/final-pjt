@@ -2,9 +2,9 @@
     <div>
         <div class="row row-cols-1 row-cols-md-3 g-4 m-auto" style="width:90%">
             <MovieCard
-            v-for="movie in movieData"
+            v-for="movie in this.$store.state.MovieDatas"
             :key="movie.id"
-            :movie="movie"   
+            :movie="movie"
             />
         </div>
     </div>
@@ -29,7 +29,6 @@
         methods: {
             getMovies(){
                 this.$store.dispatch('getMovies')
-                this.movieData = this.$store.state.MovieDatas
             },
         },
         created(){
