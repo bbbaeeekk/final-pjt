@@ -1,4 +1,5 @@
 import axios from 'axios'
+import _ from 'lodash'
 import DRF from '@/api/drf'
 
 
@@ -8,7 +9,8 @@ const state = {
 
 const getters = {
     random_movies(state) {
-        return state.random_movie
+        const r_movie = _.sample(state.random_movie)
+        return r_movie
     }
 }
 
@@ -20,7 +22,6 @@ const mutations = {
 
 const actions = {
     random_Movies({ commit }) {
-        console.log('hi')
         axios.get(DRF.URL + DRF.ROUTES.get_movie_list())
         .then(res => commit('RANDOM_MOVIES', res.data))
         .catch(err => console.error(err))

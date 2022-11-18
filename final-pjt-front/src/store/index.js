@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import movies from '@/store/modules/movies'
+import random_movie from '@/store/modules/random_movie'
 
 // import accounts from './modules/accounts.js'
 // import profile from './modules/profile.js'
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     // accounts,
     // profile, 
     movies,
+    random_movie,
     // newsfeed,
     // errors,    
     // reviews,
