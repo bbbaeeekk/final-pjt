@@ -19,27 +19,27 @@ class Movie(models.Model):
     vote_cnt = models.IntegerField()
 
 
-class Article(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='articles')
-    movie_title = models.CharField(max_length=500)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='articles')
-    username = models.CharField(max_length=100)
-    ########
-    rating = models.FloatField()
-    ########
-    title = models.CharField(max_length=500)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
+# class Article(models.Model):
+#     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='articles')
+#     movie_title = models.CharField(max_length=500)
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='articles')
+#     username = models.CharField(max_length=100)
+#     ########
+#     rating = models.FloatField()
+#     ########
+#     title = models.CharField(max_length=500)
+#     content = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
     
 
-class Comment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
-    username = models.CharField(max_length=100)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
-    content = models.CharField(max_length=500)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_comments')
+# class Comment(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
+#     username = models.CharField(max_length=100)
+#     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+#     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
+#     content = models.CharField(max_length=500)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_comments')
