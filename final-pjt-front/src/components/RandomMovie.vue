@@ -1,22 +1,24 @@
 <template>
-  <div class="card h-100 col row g-4 m-auto" :style="{'background-image':`url(${this.$store.getters.random_movies.backdrop_path})`}" style="height:100vh background-repeat:no-repeat">
-    <div>
-        <button type="button" class="btn btn-success" @click="RandomMovie">다른영화 보기</button>
-    </div>
-    <br>
-    <div>
-        <img :src="this.$store.getters.random_movies.poster_path" class="card-img-top" alt="..." style="width:60%">
-        <div class="card-body mb-4" style="width:60%; background-color:azure; overflow: hidden;">
-            <h5 class="card-title"><b>{{this.$store.getters.random_movies.title}}</b></h5>
-            <p class="card-text"><b>평점 : {{this.$store.getters.random_movies.vote_avg}}</b></p>
-            <h5 class="card-text cardpoint"><b>{{this.$store.getters.random_movies.overview}}</b></h5>
-        </div>
+  <div v-if="random_movies">
+    <div class="wrapper card h-100 col row g-4 m-auto" :style="{'background-image':`url(${random_movies.backdrop_path})`}" style="height:100vh">
+      <div>
+          <button type="button" class="btn btn btn-primary" @click="RandomMovie">랜덤영화</button>
+      </div>
+      <div style="width:100%; padding:350px; padding-top:20px;">
+          <img :src="random_movies.poster_path" class="card-img-top" style="height:auto;" alt="...">
+          <div class="card-body" style="background-color:azure; overflow: hidden;">
+              <h5 class="card-title"><b>{{random_movies.title}}</b></h5>
+              <p class="card-text"><b>평점 : {{random_movies.vote_avg}}</b></p>
+              <h5 class="card-text cardpoint"><b>{{random_movies.overview}}</b></h5>
+          </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // import random_movie from '@/store/modules/random_movie'
+import { mapGetters } from 'vuex'
 
 export default {
     name : 'RandomMovie',
@@ -24,6 +26,9 @@ export default {
         RandomMovie() {
             this.$store.dispatch('random_Movies')
         }
+    },
+    computed: {
+            ...mapGetters(['random_movies'])
     },
 }
 
@@ -40,5 +45,13 @@ export default {
   overflow: hidden !important;
   text-overflow: ellipsis;
   -webkit-line-clamp: 6;
+}
+
+.wrapper {
+  /* width: 500px;*/
+  /* display: flex; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

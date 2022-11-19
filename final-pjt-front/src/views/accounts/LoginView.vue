@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100vh">
     <h1>Login</h1>
   </div>
 </template>

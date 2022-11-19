@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav id="navbar-example2" class="navbar px-3 mb-3" style="background-color: #e3f2fd;">
+    <nav id="navbar-example2" class="navbar px-3 mb-3">
       <!-- 메인페이지로 가는 상단 로고 -->
       <div>
         <RouterLink :to="{ name: 'HomeView' }">
@@ -14,7 +14,7 @@
           <router-link to="/" style="text-decoration:none;">홈</router-link> &nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/movie" style="text-decoration:none;">전체영화</router-link> &nbsp;&nbsp;&nbsp;
+          <router-link to="/movie" style="text-decoration:none;">영화</router-link> &nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
           <router-link to="/login" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
@@ -48,12 +48,17 @@ export default{
 
 
 <style>
+/* html {
+  background-image:url("./assets/background_image1.jpg")
+} */
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image:url("./assets/background_image1.jpg")
 }
 
 nav {

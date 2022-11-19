@@ -34,7 +34,7 @@ export default {
         return `accounts/other_reviews/${username}/`
       }, 
       get_movie_list() {
-        return 'api/v1/'
+        return 'movies/'
       },
       get_movie_detail(movie_pk) {
         return `movies/${movie_pk}`

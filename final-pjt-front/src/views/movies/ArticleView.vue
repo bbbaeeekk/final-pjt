@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100vh">
     <h1>ArticleView</h1>
   </div>
 </template>

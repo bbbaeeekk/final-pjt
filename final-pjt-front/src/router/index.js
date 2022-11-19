@@ -13,6 +13,7 @@ import LoginView from '@/views/accounts/LoginView'
 import MovieView from '@/views/movies/MovieView'
 import ArticleView from '@/views/movies/ArticleView'
 import RandomView from '@/views/movies/RandomView'
+import MovieDetailView from '@/views/movies/MovieDetailView'
 
 Vue.use(VueRouter)
 
@@ -23,7 +24,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/movie',
+    path: '/movies',
     name: 'MovieView',
     component: MovieView,
     meta: {
@@ -53,6 +54,15 @@ const routes = [
     path: '/random',
     name: 'RandomView',
     component: RandomView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
+    path: '/movies/:movie_pk',
+    name: 'MovieDetailView',
+    component: MovieDetailView,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"
