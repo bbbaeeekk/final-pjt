@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="card h-100 col">
-            <img :src="movie.poster_path" class="card-img-top" alt="..." style="height:60%">
-            <div class="card-body mb-4" style="width:100%; height:25vh; overflow: hidden;">
+            <img :src="movie.poster_path" class="card-img-top" alt="..." style="height:60%; width:100%">
+            <div class="card-body mb-4" style="width:100%; height:31vh; overflow: hidden;">
                 <h5 class="card-title"><b>{{movie.title}}</b></h5>
                 <p class="card-text"><b>평점 : {{movie.vote_avg}}</b></p>
                 <p class="card-text cardpoint">{{movie.overview}}</p>

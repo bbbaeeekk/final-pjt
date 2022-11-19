@@ -9,7 +9,7 @@
             <button type="button" class="btn btn-success" @click="navigate" role="link">랜덤영화 보러가기</button>
             </router-link>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4 m-auto" style="width:90%">
+        <div class="row row-cols-1 row-cols-md-3 g-4 m-auto" style="width:80%">
             <MovieCard
             v-for="movie in this.$store.getters.movies"
             :key="movie.id"
