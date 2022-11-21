@@ -35,17 +35,23 @@
 <script>
 // import random_movie from '@/store/modules/random_movie'
 import { mapGetters } from 'vuex'
+import _ from 'lodash'
 
 export default {
     name : 'RandomMovie',
     methods: {
         RandomMovie() {
-            this.$store.dispatch('random_Movies')
+          const movie_pk = _.random(1, 800)
+          this.$store.dispatch('random_Movies', movie_pk)
         },
     },
+
     computed: {
             ...mapGetters(['random_movies'])
     },
+    created() {
+      this.RandomMovie()
+    }
 }
 
 </script>

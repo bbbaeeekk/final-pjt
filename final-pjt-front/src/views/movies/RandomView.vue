@@ -5,8 +5,6 @@
 </template>
 
 <script>
-    // import _ from 'lodash'
-    import { mapGetters, mapActions } from 'vuex'
     import RandomMovie from '@/components/RandomMovie'
 
     export default {
@@ -18,13 +16,12 @@
             }
         },
         computed: {
-            ...mapGetters([])
+
         },
         methods: {
-            ...mapActions(['random_Movies',])
         },
         created(){
-            this.random_Movies()
+
         },
     }
 </script>
