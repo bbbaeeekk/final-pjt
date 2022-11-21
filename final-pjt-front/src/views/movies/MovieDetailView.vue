@@ -11,11 +11,6 @@
     <div class="wrapper card h-100 col row g-4 m-auto" :style="{'background-image':`url(${movieDetail.backdrop_path})`}">
       <div class="container p-3 mt-3">
         <div class="container neumorph p-5">
-          <div>
-            <!-- 뒤로가기 버튼 -->
-            <button type="button" class="btn btn-danger mb-2" style="height: 40px; width:300px;" @click="goBack">BACK</button>
-          </div>
-          
           <div class="row p-3 neumorph3">
             <h2><b>{{ movieDetail.title }}</b></h2>
             <div class="col-12 col-lg-4 align-items-center p-3">
@@ -30,14 +25,17 @@
               </div> -->
               <!-- descriptions -->
               <div class="description mx-3 mt-3">
-              <h6 class="my-3"><b>개봉 : {{ movieDetail.release_date }}</b></h6>
+              <h6 class="my-3"><b>{{ movieDetail.release_date }} 개봉</b></h6>
               <h6 class="my-3"><b>장르 :
               <span v-for="(genre, index) in movieDetail.genre" :key="index">
                 {{ genre.name }}
               </span></b></h6>
               <h6 class="my-3"><b>평점 : {{ movieDetail.vote_avg }}</b></h6>
-              <h6 class="my-3"><b>누적 관람객 : {{ movieDetail.popularity }}</b></h6>
               {{ movieDetail.overview }}
+              <!-- 뒤로가기 버튼 -->
+              <div>
+                <button type="button" class="btn btn-danger mt-5" style="height: 40px; width:300px;" @click="goBack">BACK</button>
+              </div>
             </div>
             
           </div>

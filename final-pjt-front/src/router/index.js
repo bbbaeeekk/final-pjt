@@ -25,7 +25,6 @@ import ArticleNewView from '@/views/articles/ArticleNewView'
 import ArticleEditView from '@/views/articles/ArticleEditView'
 
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
