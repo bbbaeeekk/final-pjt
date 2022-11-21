@@ -8,7 +8,9 @@ import NotFound from '@/views/NotFound'
 
 // accounts Views
 import LoginView from '@/views/accounts/LoginView'
+import LogoutView from '@/views/accounts/LogoutView'
 import SignupView from '@/views/accounts/SignupView'
+import ProfileView from '@/views/accounts/ProfileView'
 
 // movies Views
 import MovieView from '@/views/movies/MovieView'
@@ -88,9 +90,27 @@ const routes = [
     }
   },
   {
+    path: '/logout',
+    name: 'LogoutView',
+    component: LogoutView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
     path: '/signup',
     name: 'SignupView',
     component: SignupView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
+    path: '/profile',
+    name: 'ProfileView',
+    component: ProfileView,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"

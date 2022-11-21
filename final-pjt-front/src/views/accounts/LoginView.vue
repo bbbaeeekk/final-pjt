@@ -1,82 +1,49 @@
 <template>
-  <div class="container">
-    
-    <div class="logincontainer box">
-      <div class="imgcontainer">
-        
-      </div>
-      <br>
-      <p class="text-center content is-small">로그인 후 더 다양한 서비스를 즐겨보세요 !</p>
-      <account-error-list v-if="authError"></account-error-list>
-      <br>
-      <form @submit.prevent="login(credentials)">
-        <div class="field">
-          <p class="control has-icons-left">
-            <b-input placeholder="Enter your username" v-model="credentials.username" id="username">
-            </b-input>
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-          <p class="control has-icons-left">
-            <b-input type="password" v-model="credentials.password" id="password"
-              placeholder="Enter your password"
-              password-reveal>
-            </b-input>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
+  <div class="container" style="height: 100vh;">
+    <div class="row">
+      <h1>Login</h1>
+      <div class="col-4"></div>
+      <div class="card neumorph col-4 align-items-center">
+        <div class="m-4">
+          <label for="username">username</label>
+          <input v-model="loginData.username" id="username" type="text" class="form-control mb-3" />
         </div>
         <br>
-        <button class="button is-fullwidth">로그인</button>
-      </form>
+        <div>
+          <label for="password">password</label>
+          <input v-model="loginData.password" id="password" type="password" class="form-control mb-3" />
+        </div>
+        <br>
+        <div class="mx-auto">
+          <button class="mx-auto btn neumorph mb-3" @click="login(loginData)"><b>로그인</b></button>
+        </div>
+        <div class="mx-auto">
+          <router-link to="/signup" style="text-decoration:none;"><b>회원가입</b></router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
-  import { mapActions, mapGetters } from 'vuex'
-  import AccountErrorList from '@/components/AccountErrorList.vue'
-
-  export default {
-    name: 'LoginView',
-    components: {
-      AccountErrorList,
-    },
-    data() {
-      return {
-        credentials: {
-          username: '',
-          password: '',
-        }
+export default {
+  name: 'LoginView',
+  data() {
+    return {
+      loginData: {
+        username: null,
+        password: null,
       }
-    },
-  computed: {
-		...mapGetters(['authError'])
-	},
-	methods: {
-		...mapActions(['login'])
-	},
+    }
+  },
+  methods: {
+    ...mapActions(['login'])
   }
+}
 </script>
 
-<style>  
-  .container {
-    width: 750px;
-  }
-  .logincontainer {
-    width: 450px;
-    margin: auto;
-  }
-  .imgcontainer{
-    width: 225px;
-    margin: auto;
-    padding: 70px;
-    padding-bottom : 10px;
-  }
+<style>
 
 </style>
