@@ -7,6 +7,7 @@ from .models import Movie
 from .serializers import (
     MovieListSerializer, 
     MovieDetailSerializer,
+    GenreListSerializer,
 )
 
 User = get_user_model()
@@ -17,7 +18,6 @@ def get_movie_list(request):
     movies = Movie.objects.all()
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
-
 
 @api_view(['GET'])
 def get_movie_detail(request, movie_pk):
