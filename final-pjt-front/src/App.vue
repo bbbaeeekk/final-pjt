@@ -14,7 +14,7 @@
           <router-link to="/" style="text-decoration:none;">홈</router-link> &nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/movie" style="text-decoration:none;">영화</router-link> &nbsp;&nbsp;&nbsp;
+          <router-link to="/movies" style="text-decoration:none;">영화</router-link> &nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
           <router-link to="/login" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
