@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav id="navbar-example2" class="navbar px-3 mb-3">
+    <nav id="navbar-example2" class="navbar px-3 mb-3" style="background-color:black;">
       <!-- 메인페이지로 가는 상단 로고 -->
       <div>
         <RouterLink :to="{ name: 'HomeView' }">
@@ -30,7 +30,6 @@
           <router-link :to="{ name: 'ProfileView', params: { username: getUsername } }"
           v-if="isLoggedIn" style="text-decoration:none;">프로필</router-link>&nbsp;&nbsp;&nbsp;
         </li>
-
       </ul>
     </nav>
     <router-view/>

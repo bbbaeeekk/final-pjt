@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="height: 100vh;">
+  <div class="container" @keyup.enter="login(loginData)" style="height: 100vh;">
     <div class="row">
       <h1>Login</h1>
       <div class="col-4"></div>
