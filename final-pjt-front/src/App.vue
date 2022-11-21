@@ -20,7 +20,10 @@
           <router-link to="/login" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/article" style="text-decoration:none;">게시판</router-link>
+          <router-link to="/signup" style="text-decoration:none;">회원가입</router-link>&nbsp;&nbsp;&nbsp;
+        </li>
+        <li class="nav-item">
+          <router-link to="/articlelist" style="text-decoration:none;">게시판</router-link>
         </li>
       </ul>
     </nav>

@@ -8,12 +8,19 @@ import NotFound from '@/views/NotFound'
 
 // accounts Views
 import LoginView from '@/views/accounts/LoginView'
+import SignupView from '@/views/accounts/SignupView'
 
 // movies Views
 import MovieView from '@/views/movies/MovieView'
-import ArticleView from '@/views/movies/ArticleView'
+// import ArticleView from '@/views/movies/ArticleView'
 import RandomView from '@/views/movies/RandomView'
 import MovieDetailView from '@/views/movies/MovieDetailView'
+
+// articles Views
+import ArticleListView from '@/views/articles/ArticleListView'
+import ArticleDetailView from '@/views/articles/ArticleDetailView'
+import ArticleNewView from '@/views/articles/ArticleNewView'
+import ArticleEditView from '@/views/articles/ArticleEditView'
 
 Vue.use(VueRouter)
 
@@ -32,15 +39,45 @@ const routes = [
       leaveClass: "animate__animated animate__zoomOut"
     }
   },
+  //articles
   {
-    path: '/article',
-    name: 'ArticleView',
-    component: ArticleView,
+    path: '/articlelist',
+    name: 'ArticleListView',
+    component: ArticleListView,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"
     }
   },
+  {
+    path: '/articlelist/:articlePk',
+    name: 'ArticleDetailView',
+    component: ArticleDetailView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
+    path: '/articlelist/new',
+    name: 'ArticleNewView',
+    component: ArticleNewView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
+    path: '/articlelist/:articlePk/edit',
+    name: 'ArticleEdit',
+    component: ArticleEditView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+
+  // accounts
   {
     path: '/login',
     name: 'LoginView',
@@ -50,6 +87,17 @@ const routes = [
       leaveClass: "animate__animated animate__zoomOut"
     }
   },
+  {
+    path: '/signup',
+    name: 'SignupView',
+    component: SignupView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+
+
   {
     path: '/random',
     name: 'RandomView',

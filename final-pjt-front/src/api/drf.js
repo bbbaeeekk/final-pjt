@@ -1,4 +1,10 @@
-// api/drf.js
+// api/dr
+const HOST = 'http://127.0.0.1:8000/'
+
+// const ACCOUNTS = 'accounts/'
+const ARTICLES = 'articles/'
+const COMMENTS = 'comments/'
+// const MOVIES = 'movies/'
 
 export default {
     URL: 'http://127.0.0.1:8000/',
@@ -57,6 +63,17 @@ export default {
       comment_update_or_delete(movie_pk, review_pk, comment_pk) {
         return `movies/${movie_pk}/reviews/${review_pk}/comments/${comment_pk}/`
       },
+
       
-    }
+      
+    },
+    
+    articles: {
+      articles: () => HOST + ARTICLES,
+      article: articlePk => HOST + ARTICLES + `${articlePk}/`,
+      likeArticle: articlePk => HOST + ARTICLES + `${articlePk}/` + 'like/',
+      articlecomments: articlePk => HOST + ARTICLES + `${articlePk}/` + COMMENTS,
+      comment: (articlePk, commentPk) =>
+        HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
+    },
   }
