@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django_seed',
 ]
 
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -158,7 +160,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny', # 누구나 접근 가능
     ),
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ),
+    ],
 }

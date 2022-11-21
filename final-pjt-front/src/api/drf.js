@@ -10,13 +10,13 @@ export default {
     URL: 'http://127.0.0.1:8000/',
     ROUTES: {
       signup() {
-        return 'rest-auth/signup/'
+        return 'accounts/signup/'
       },
       login() {
-        return 'rest-auth/login/'
+        return 'accounts/login/'
       },
       logout() { 
-        return 'rest-auth/logout/'
+        return 'accounts/logout/'
       },
       profile(username) {
         return `accounts/profile/${username}/`

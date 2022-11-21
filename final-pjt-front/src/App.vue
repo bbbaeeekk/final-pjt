@@ -9,6 +9,7 @@
           </div>
         </RouterLink>
       </div>
+      <b v-if="isLoggedIn">{{getUsername}} 님 환영합니다</b>
       <ul class="nav nav-pills">
         <li class="nav-item">
           <router-link to="/" style="text-decoration:none;">홈</router-link> &nbsp;&nbsp;&nbsp;
@@ -17,14 +18,19 @@
           <router-link to="/movies" style="text-decoration:none;">영화</router-link> &nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/login" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
+          <router-link to="/articlelist" style="text-decoration:none;">게시판</router-link>&nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/signup" style="text-decoration:none;">회원가입</router-link>&nbsp;&nbsp;&nbsp;
+          <router-link to="/login" v-if="!isLoggedIn" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
         </li>
         <li class="nav-item">
-          <router-link to="/articlelist" style="text-decoration:none;">게시판</router-link>
+          <router-link to="/logout" v-if="isLoggedIn" style="text-decoration:none;">로그아웃</router-link>&nbsp;&nbsp;&nbsp;
         </li>
+        <li class="nav-item">
+          <router-link :to="{ name: 'ProfileView', params: { username: getUsername } }"
+          v-if="isLoggedIn" style="text-decoration:none;">프로필</router-link>&nbsp;&nbsp;&nbsp;
+        </li>
+
       </ul>
     </nav>
     <router-view/>
@@ -32,10 +38,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default{
   name:'App',
   computed: {
-
+    ...mapGetters(['isLoggedIn']),
+    ...mapGetters(['getUsername']),
   },
   data() {
     return {

@@ -15,7 +15,7 @@ from .serializers import (
 
 
 @api_view(['GET', 'POST'])
-@login_required
+# @login_required
 # (login_url='/accounts/login')
 def article_index_create(request):
 

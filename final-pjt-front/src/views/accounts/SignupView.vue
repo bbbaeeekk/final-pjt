@@ -1,98 +1,51 @@
 <template>
-  <div>
-
-
-    <div class="container">
-      
-      <div class="logincontainer box">
-        <div class="imgcontainer">
-
+  <div class="container" style="height: 100vh;">
+    <div class="row">
+      <h1 class="mb-3">Signup</h1>
+      <div class="col-4"></div>
+      <div class="card neumorph col-4 align-items-center">
+        <div>
+          <label for="username">username</label>
+          <input v-model="signupData.username" id="username" type="text" class="form-control mb-3" />
         </div>
-        <br>
-        <p class="text-center content is-small">회원가입 후 더 다양한 서비스를 즐겨보세요 !</p>
-        <account-error-list v-if="authError"></account-error-list>
-        <br>
-        <form @submit.prevent="signup(credentials)">
-          <div class="field">
-            <p class="control has-icons-left">
-              <b-input placeholder="Enter your username" v-model="credentials.username" id="username">
-              </b-input>
-              <span class="icon is-small is-left">
-                <i class="fa fa-user"></i>
-              </span>
-            </p>
-          </div>
-          <div class="field">
-            <p class="control has-icons-left">
-              <b-input type="password" v-model="credentials.password1" id="password1"
-                placeholder="Enter your password"
-                password-reveal>
-              </b-input>
-              <span class="icon is-small is-left">
-                <i class="fa fa-key"></i>
-              </span>
-            </p>
-          </div>
-          <div class="field">
-            <p class="control has-icons-left">
-              <b-input type="password" v-model="credentials.password2" id="password2"
-                placeholder="Enter your password"
-                password-reveal>
-              </b-input>
-              <span class="icon is-small is-left">
-                <i class="fa fa-key"></i>
-              </span>
-            </p>
-          </div>
-          <br>
-          <button class="button is-fullwidth">가입하기</button>
-        </form>
+        <div>
+          <label for="password1">password</label>
+          <input v-model="signupData.password1" id="password1" type="password" class="form-control mb-3" />
+        </div>
+        <div>
+          <label for="password2">password comfirm</label>
+          <input v-model="signupData.password2" id="password2" type="password" class="form-control mb-3" />
+        </div>
+        <div>
+          <button @click="signup(signupData)" class="btn neumorph mb-3">Signup</button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex'
-  import AccountErrorList from '@/components/AccountErrorList.vue'
+import { mapActions } from 'vuex'
 
-  export default {
-    name: 'SignupView',
-    components: {
-      AccountErrorList,
-    },
-    data() {
-      return {
-        credentials: {
-          username: '',
-          password1: '',
-          password2: '',
-        }
+export default {
+  name: 'SignupView',
+  data() {
+    return {
+      signupData: {
+        username: null,
+        password1: null,
+        password2: null,
       }
-    },
-    computed: {
-      ...mapGetters(['authError'])
-    },
-    methods: {
-      ...mapActions(['signup'])
-    },
+    }
+  },
+  methods: {
+    ...mapActions(['signup'])
   }
+}
 </script>
 
-<style>  
-  .container {
-    width: 750px;
-  }
-  .logincontainer {
-    width: 450px;
-    margin: auto;
-  }
-  .imgcontainer{
-    width: 225px;
-    margin: auto;
-    padding: 70px;
-    padding-bottom : 10px;
-  }
+<style>
+
 
 </style>
 
