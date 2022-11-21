@@ -60,7 +60,7 @@ const routes = [
     }
   },
   {
-    path: '/movies/:movie_pk',
+    path: `/movies/:movie_pk`,
     name: 'MovieDetailView',
     component: MovieDetailView,
     meta: {
