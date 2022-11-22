@@ -35,6 +35,7 @@ html,body {
 }
 
 #app {
+  /* background-color: black; */
   width: 100%;
   height: 100%;
   display:flex;
@@ -59,38 +60,14 @@ html,body {
 /* body style */
 
 .body {
-  /* margin-top: 10vh; */
   width: 100%;
   height: 110vh;
   padding: 50px;
-  /* background-color: #122333; */
-
-  /* 어두운 테마 */
-  background-color: #F9F7F7;
-  /* 밝은 테마 */
-  /* background-color: #F9F7F7; */
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* align-items: center; */
-}
 
-/* footer style */
-/*
-footer{
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  background-color: #dcdfdd;
-  color:#2c3e50;
-  font-weight: bold;
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items:center;
-  }
-*/
+}
 
 </style>

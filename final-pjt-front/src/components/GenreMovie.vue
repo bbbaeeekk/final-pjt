@@ -1,25 +1,27 @@
 <template>
     <div>
+      {{genre_movies}}
         <div class="card h-100 col movie-item" @click="movie_detail">
-            <img :src="movie.poster_path" class="card-img-top" alt="..." style="height:100%; width:100%">
+            <img :src="genre_movies.poster_path" class="card-img-top" alt="..." style="height:100%; width:100%">
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
-    name:'SelectMovie',
-    props: {
-        'movie':Object,
-    },
+    name:'GenreMovie',
     methods: {
-        movie_detail() {
-            this.$store.dispatch('getMovieDetail',this.movie.id)
-            this.$router.push({name:'MovieDetailView', params:{movie_pk:`${this.movie.id}`}})
-        }
+      movie_detail() {
+          this.$store.dispatch('getMovieDetail',this.movie.id)
+          this.$router.push({name:'moviesDetail', params:{movie_pk:`${this.movie.id}`}})
+      }
     },
-}
+    computed: {
+      ...mapGetters(['genre_movies'])
+    }
+  }
 </script>
 
 <style>

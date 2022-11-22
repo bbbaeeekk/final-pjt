@@ -5,6 +5,7 @@ import djangourl from '@/urls/djangourl'
 const state = {
     MovieDatas:[],
     movieDetail: [],
+    genre_movies: [],
 }
 
 const getters = {
@@ -14,6 +15,9 @@ const getters = {
     movieDetail(state) {
         return state.movieDetail
     },
+    genre_movies(state) {
+        return state.genre_movies
+    }
 }
 
 const mutations = {
@@ -25,6 +29,10 @@ const mutations = {
         // state.movieDetailReviews = movieDetail.reviews
         // state.reviews = movieDetail.reviews
     },
+    GENRE_MOVIE(state, genre_movies) {
+        console.log(genre_movies)
+        state.genre_movies = genre_movies
+    }
 }
 
 const actions = {
@@ -37,6 +45,9 @@ const actions = {
         axios.get(djangourl.URL + djangourl.ROUTES.get_movie_detail(movie_pk))
           .then(res => commit('GET_MOVIE_DETAIL', res.data))
           .catch(err => console.error(err))
+    },
+    genre_movie({commit}, genre_movies) {
+        commit('GENRE_MOVIE', genre_movies)
     },
 }
 

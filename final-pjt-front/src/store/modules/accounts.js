@@ -19,7 +19,7 @@ export default {
     },
     //profile은 대상 유저의 기본 정보 + 작성글/좋아요글/(+작성댓글/좋아요댓글/본영화/보고싶은영화/기타)
     userProfile(state) {
-      console.log(state.userProfile.username)
+      // console.log(state.userProfile.username)
       return state.userProfile
     },
     authError(state) {
@@ -35,11 +35,11 @@ export default {
       return state.token = token
     },
     SET_CURRENT_USER(state, user) {
-      console.log('지금 커런트 유저 설정됨', user)
+      // console.log('지금 커런트 유저 설정됨', user)
       return state.currentUser = user
     },
     SET_USER_PROFILE(state, userProfile) {
-      console.log('userprofile mutation',userProfile)
+      // console.log('userprofile mutation',userProfile)
       return state.userProfile = userProfile
     },
     SET_USER_PROFILE_FOLLOW(state, userProfile) {
@@ -53,7 +53,7 @@ export default {
   actions: {
     setToken({commit}, token){
       commit('SET_TOKEN', token)
-      console.log('setToken완료')
+      // console.log('setToken완료')
       localStorage.setItem('token',token)
     },
     removeToken({commit}){
@@ -72,7 +72,7 @@ export default {
         dispatch('getCurrentUser')
         setTimeout(
           function(){
-            console.log('회원가입 후 currentUser',getters.currentUser)
+            // console.log('회원가입 후 currentUser',getters.currentUser)
             dispatch('getUserProfile', {username: getters.currentUser.username})
             router.push({name: 'profile', params:{ username: getters.currentUser.username }})
           }, 10

@@ -6,7 +6,7 @@ import HomeView from '@/views/HomeView.vue'
 import MoviesView from '@/views/movies/MovieView.vue'
 import MoviesDetail from '@/views/movies/MovieDetailView.vue'
 import RandomView from '@/views/movies/RandomView'
-import SelectMovie from '@/components/SelectMovie'
+import GenreMovie from '@/components/GenreMovie'
 
 import SignUpView from '@/views/accounts/SignUpView.vue'
 import LoginView from '@/views/accounts/LoginView.vue'
@@ -48,9 +48,9 @@ const routes = [
     }
   },
   {
-    path: '/select_movies',
-    name: 'SelectMovie',
-    component: SelectMovie,
+    path: '/genre_movies',
+    name: 'GenreMovie',
+    component: GenreMovie,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"

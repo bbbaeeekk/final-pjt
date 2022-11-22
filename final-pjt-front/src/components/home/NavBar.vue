@@ -6,7 +6,7 @@
       <div>
         <RouterLink :to="{ name: 'home' }">
           <div class="mx-auto mt-auto">
-            <img width=70px class="neumorph" :class="{grayscale:!isHovering}" @mouseover="isHovering = true" @mouseout="isHovering = false" src="@/assets/ssafy_logo.png" alt="logo to mainpage">
+            <img width=70px class="neumorph" :class="{grayscale:!isHovering}" @mouseover="isHovering = true" @mouseout="isHovering = false" src="@/assets/디즈니이미지-removebg-preview.png" alt="logo to mainpage">
           </div>
         </RouterLink>
       </div>
@@ -41,6 +41,11 @@ import { mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'NavBar',
+  data() {
+    return {
+      isHovering: false
+    }
+  },
   methods: {
     ...mapActions(['logout'])
   },
@@ -150,4 +155,5 @@ nav div a.router-link-exact-active {
   color: #e8c171;
   border-bottom: 3px solid;
 }
+
 </style>

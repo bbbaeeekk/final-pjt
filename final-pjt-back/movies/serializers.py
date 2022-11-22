@@ -12,7 +12,7 @@ class MovieListSerializer(serializers.ModelSerializer):
     # genre = GenreListSerializer(many=True, read_only=True)
     class Meta:
         model = Movie
-        fields = ('title', 'poster_path', 'overview','vote_avg', 'id', 'backdrop_path')
+        fields = ('title', 'poster_path', 'overview','vote_avg', 'id', 'backdrop_path','genre')
 
 
 # class CommentSerializer(serializers.ModelSerializer):

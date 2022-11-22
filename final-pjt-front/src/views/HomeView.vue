@@ -1,7 +1,6 @@
 <template>
   <div style="height:100vh">
     <h1 style="color:crimson">장르를 선택하세요</h1>
-    <button @click="select_genre">제출</button>
     <b-form-group v-slot="{ ariaDescribedby }">
       <b-form-checkbox-group
         v-model="selectedgenre"
@@ -13,25 +12,16 @@
         name="genre_buttons"
       ></b-form-checkbox-group>
     </b-form-group>
-    <div v-if="submit">
-      <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
-        <SelectMovie
-          v-for="movie in selectmovie"
-          :key="movie.id"
-          :movie="movie"
-        />
-      </div>
-    </div>
+    <button class="mt-3 btn btn-primary" @click="select_genre">영화보러가기</button>
   </div>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import SelectMovie from '@/components/SelectMovie'
 
   export default {
       name: 'HomeView',
-      components: {SelectMovie,},
+      components: {},
       data() {
           return {
             selectedgenre : [],
@@ -56,8 +46,8 @@
               { text: '전쟁', value: 10752 },
               { text: '서부', value: 37 },
             ],
-            submit:false,
-            selectmovie : []
+            selectmovie : [],
+            search_value:""
           }
       },
       computed: {
@@ -66,7 +56,6 @@
       methods: {
           ...mapActions(['getMovies',]),
           select_genre(){
-            this.submit = true
             this.movies.forEach((movie) => {
               for (const genre of this.selectedgenre) {
                 if (movie.genre.includes(genre)) {
@@ -75,6 +64,7 @@
                 }
               }
             })
+          this.$store.dispatch('genre_movie',this.selectmovie)
           }
       },
       created(){
