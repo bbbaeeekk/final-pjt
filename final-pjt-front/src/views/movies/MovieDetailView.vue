@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <!-- movieDetail이 영화정보 -->
     <!-- <transition  
       appear
@@ -127,4 +127,4 @@
   background-repeat: no-repeat;
   height:150vh;
 }
-  </style>
+  </style> -->

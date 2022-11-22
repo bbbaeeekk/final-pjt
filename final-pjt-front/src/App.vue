@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link rel="icon" href="@/assets/영화이미지.png" type="image/x-icon"/>
     <nav id="navbar-example2" class="navbar px-3 mb-3" style="background-color:black;">
       <!-- 메인페이지로 가는 상단 로고 -->
       <div>
@@ -68,7 +69,7 @@ export default{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image:url("./assets/background_image1.jpg")
+  /* background-image:url("./assets/background_image1.jpg") */
 }
 
 nav {

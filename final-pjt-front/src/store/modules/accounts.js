@@ -50,7 +50,7 @@ const actions = {
         cookies.set('auth-token', res.data.key, '2d')
         cookies.set('auth-username', info.data.username, '2d')
         // redirect => /articles
-        router.push({ name: 'Movies' })
+        router.push({ name: 'MovieView' })
         dispatch('fetchUserInfo', info.data.username)
       })
       .catch(err => {
@@ -104,8 +104,8 @@ const actions = {
       .then(() => {
         cookies.remove('auth-token')  // Cookie삭제 |state에서는 존재
         commit('SET_TOKEN', null)  // state 에서도 삭제
-        console.log('dffd')
-        router.push({ name: 'Movies' }) 
+        // console.log('dffd')
+        router.push({ name: 'HomeView' }) 
       })
       .catch(err => console.error(err.response.data))
   },

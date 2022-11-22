@@ -14,6 +14,8 @@ import ProfileView from '@/views/accounts/ProfileView'
 
 // movies Views
 import MovieView from '@/views/movies/MovieView'
+import SelectMovie from '@/components/SelectMovie'
+
 // import ArticleView from '@/views/movies/ArticleView'
 import RandomView from '@/views/movies/RandomView'
 import MovieDetailView from '@/views/movies/MovieDetailView'
@@ -35,6 +37,15 @@ const routes = [
     path: '/movies',
     name: 'MovieView',
     component: MovieView,
+    meta: {
+      enterClass: "animate__animated animate__zoomIn",
+      leaveClass: "animate__animated animate__zoomOut"
+    }
+  },
+  {
+    path: '/select_movies',
+    name: 'SelectMovie',
+    component: SelectMovie,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"

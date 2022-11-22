@@ -9,7 +9,7 @@
         </div>
         <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
             <MovieCard
-            v-for="movie in this.$store.getters.movies"
+            v-for="movie in movies"
             :key="movie.id"
             :movie="movie"
             />
@@ -29,7 +29,7 @@
             }
         },
         computed: {
-            ...mapGetters([])
+            ...mapGetters(['movies'])
         },
         methods: {
             ...mapActions(['getMovies',]),
