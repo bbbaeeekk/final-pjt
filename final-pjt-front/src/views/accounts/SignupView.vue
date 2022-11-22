@@ -1,51 +1,79 @@
 <template>
-  <div class="container" style="height: 100vh;">
-    <div class="row">
-      <h1 class="mb-3">Signup</h1>
-      <div class="col-4"></div>
-      <div class="card neumorph col-4 align-items-center">
-        <div>
-          <label for="username">username</label>
-          <input v-model="signupData.username" id="username" type="text" class="form-control mb-3" />
-        </div>
-        <div>
-          <label for="password1">password</label>
-          <input v-model="signupData.password1" id="password1" type="password" class="form-control mb-3" />
-        </div>
-        <div>
-          <label for="password2">password comfirm</label>
-          <input v-model="signupData.password2" id="password2" type="password" class="form-control mb-3" />
-        </div>
-        <div>
-          <button @click="signup(signupData)" class="btn neumorph mb-3">Signup</button>
-        </div>
-      </div>
-    </div>
+  <div id="SignUpView">
+    <h2>회원가입</h2>
+    <hr>
+    <account-error-list v-if="authError"></account-error-list>
+    <br>
+    <form @submit.prevent="signUp(credentials)">
+      <label for="signupform-username">이름ㅤ</label> 
+      <input type="text" id="signupform-username" v-model="credentials.username" class="mb-3">
+      <label for="signupform-password1">비밀번호ㅤ</label> 
+      <input type="password" id="signupform-password1" v-model="credentials.password1" class="mb-3">
+      <label for="signupform-password2">비밀 번호 확인ㅤ</label> 
+      <input type="password" id="signupform-password2" v-model="credentials.password2" class="mb-5">
+      <button id="signup-button">회원가입</button>
+    </form>
+    <br>
+    이미 가입하셨나요?ㅤ
+    <router-link :to="{ name: 'login' }" style="color: #F21170">로그인</router-link>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
+import AccountErrorList from '@/components/accounts/AccountErrorList.vue'
 
 export default {
-  name: 'SignupView',
-  data() {
+  name:'SignUpView',
+  components: { AccountErrorList },
+  data(){
     return {
-      signupData: {
-        username: null,
-        password1: null,
-        password2: null,
+      credentials: {
+        username: '',
+        password1: '',
+        password2: ''
       }
     }
   },
-  methods: {
-    ...mapActions(['signup'])
+  computed:{
+    ...mapGetters(['authError', 'isLoggedIn'])
+  },
+  methods:{
+    ...mapActions(['signUp']),
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
+#SignUpView{
+  align-content: center;
+  width: 300px;
+  height: 480px;
+  border: 1px solid; 
+  padding:30px; 
+  background-color: white; 
+  color:black;
+  margin:0 auto;
+  border-radius: 20px;
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+#signupform-username, #signupform-password1, #signupform-password2{
+  background-color: #F7F7F7;
+  border-radius: 3px;
+  border-width: 1px;
+  width: 100%;
+}
+
+#signup-button{
+  background-color: #F21170;
+  width: 100%;
+  height: 50px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+}
 
 </style>
-

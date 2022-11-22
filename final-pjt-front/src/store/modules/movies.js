@@ -1,5 +1,5 @@
 import axios from 'axios'
-import DRF from '@/api/drf'
+import djangourl from '@/urls/djangourl'
 
 
 const state = {
@@ -29,12 +29,12 @@ const mutations = {
 
 const actions = {
     getMovies({ commit }) {
-        axios.get(DRF.URL + DRF.ROUTES.get_movie_list())
+        axios.get(djangourl.URL + djangourl.ROUTES.get_movie_list())
         .then(res => commit('GET_MOVIES', res.data))
         .catch(err => console.error(err))
     },
     getMovieDetail({ commit }, movie_pk) {
-        axios.get(DRF.URL + DRF.ROUTES.get_movie_detail(movie_pk))
+        axios.get(djangourl.URL + djangourl.ROUTES.get_movie_detail(movie_pk))
           .then(res => commit('GET_MOVIE_DETAIL', res.data))
           .catch(err => console.error(err))
     },

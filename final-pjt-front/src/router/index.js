@@ -1,42 +1,47 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import store from '@/store'
+import store from '../store'
 
-// Views
-import HomeView from '@/views/HomeView'
-import NotFound from '@/views/NotFound'
-
-// accounts Views
-import LoginView from '@/views/accounts/LoginView'
-import LogoutView from '@/views/accounts/LogoutView'
-import SignupView from '@/views/accounts/SignupView'
-import ProfileView from '@/views/accounts/ProfileView'
-
-// movies Views
-import MovieView from '@/views/movies/MovieView'
+import HomeView from '@/views/HomeView.vue'
+import MoviesView from '@/views/movies/MovieView.vue'
+import MoviesDetail from '@/views/movies/MovieDetailView.vue'
+import RandomView from '@/views/movies/RandomView'
 import SelectMovie from '@/components/SelectMovie'
 
-// import ArticleView from '@/views/movies/ArticleView'
-import RandomView from '@/views/movies/RandomView'
-import MovieDetailView from '@/views/movies/MovieDetailView'
+import SignUpView from '@/views/accounts/SignUpView.vue'
+import LoginView from '@/views/accounts/LoginView.vue'
+import ProfileView from '@/views/accounts/ProfileView.vue'
 
-// articles Views
-import ArticleListView from '@/views/articles/ArticleListView'
-import ArticleDetailView from '@/views/articles/ArticleDetailView'
-import ArticleNewView from '@/views/articles/ArticleNewView'
-import ArticleEditView from '@/views/articles/ArticleEditView'
+import CommunityView from '@/views/communities/CommunityView.vue'
+import ArticleView from '@/views/communities/ArticleView.vue'
+import ArticleCreateView from '@/views/communities/ArticleCreateView.vue'
+import ArticleUpdateView from '@/views/communities/ArticleUpdateView.vue'
+
+import NotFound404 from '@/views/NotFound404.vue'
 
 Vue.use(VueRouter)
+
 const routes = [
+  //메인 홈페이지
   {
     path: '/',
-    name: 'HomeView',
+    name: 'home',
     component: HomeView
   },
   {
+    path: '/movies/:movie_pk',
+    name: 'moviesDetail',
+    component: MoviesDetail
+  },
+  {
     path: '/movies',
-    name: 'MovieView',
-    component: MovieView,
+    name: 'movies',
+    component: MoviesView
+  },
+  {
+    path: '/random',
+    name: 'RandomView',
+    component: RandomView,
     meta: {
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"
@@ -51,105 +56,55 @@ const routes = [
       leaveClass: "animate__animated animate__zoomOut"
     }
   },
-  //articles
-  {
-    path: '/articlelist',
-    name: 'ArticleListView',
-    component: ArticleListView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
-  {
-    path: '/articlelist/:articlePk',
-    name: 'ArticleDetailView',
-    component: ArticleDetailView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
-  {
-    path: '/articlelist/new',
-    name: 'ArticleNewView',
-    component: ArticleNewView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
-  {
-    path: '/articlelist/:articlePk/edit',
-    name: 'ArticleEdit',
-    component: ArticleEditView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
 
-  // accounts
-  {
-    path: '/login',
-    name: 'LoginView',
-    component: LoginView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
-  {
-    path: '/logout',
-    name: 'LogoutView',
-    component: LogoutView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
+  //계정 기능
   {
     path: '/signup',
-    name: 'SignupView',
-    component: SignupView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
+    name: 'signup',
+    component: SignUpView
   },
   {
-    path: '/profile',
-    name: 'ProfileView',
-    component: ProfileView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/profile/:username',
+    name: 'profile',
+    component: ProfileView
   },
 
+  //커뮤니티 기능
+  {
+    path: '/community',
+    name: 'community',
+    component: CommunityView
+  },
+  {
+    path: '/community/create',
+    name: 'articleCreate',
+    component: ArticleCreateView
+  },
+  {
+    path: '/community/:articlePk',
+    name: 'article',
+    component: ArticleView
+  },
+  {
+    path: '/community/:articlePk/update',
+    name: 'ArticleUpdate',
+    component: ArticleUpdateView
+  },
 
+  //에러
   {
-    path: '/random',
-    name: 'RandomView',
-    component: RandomView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
+    path: '/404',
+    name: 'NotFound404',
+    component: NotFound404
   },
   {
-    path: `/movies/:movie_pk`,
-    name: 'MovieDetailView',
-    component: MovieDetailView,
-    meta: {
-      enterClass: "animate__animated animate__zoomIn",
-      leaveClass: "animate__animated animate__zoomOut"
-    }
-  },
-  {
-    path: '/NotFound',
-    name: 'NotFound',
-    component: NotFound
+    path: '*',
+    redirect: '/404'
   },
 ]
 
@@ -159,42 +114,26 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   // Login 안해도 접근 가능
-//   // const publicPages = ['Home', 'Signup', 'Login']
+router.beforeEach((to, from, next) => {
+  // 이전 페이지에서 발생한 에러메시지 삭제
+  store.commit('SET_AUTH_ERROR', null)
 
-//   // Login 해야만 함
-//   const privatePages = ['Logout', 'Profile', 'MovieDetail', 'NewsFeed', 'OtherUserProfile']
-//   // Login 안해야만 함
-//   const outerPages = ['Signup', 'Login']
+  const { isLoggedIn } = store.getters
 
-//   const authRequired = privatePages.includes(to.name)
-//   const guestRequired = outerPages.includes(to.name)
-//   const isLoggedIn = store.getters.isLoggedIn
+  const noAuthPages = ['home','login','signup']
 
-//   // 없는 곳으로 오려 한다면
-//   if (!to.name) {
-//     next({ name: 'NotFound' })
-//   }
+  const isAuthRequired = !noAuthPages.includes(to.name)
 
-//   // 로그인 사용자는 PASS 시켜야 할 때, 
-//   if (guestRequired && isLoggedIn) {
-//     next({ name: 'Movies' })
-//   }
+  if (isAuthRequired && !isLoggedIn) {
+    // alert('Require Login. Redirecting..')
+    next({ name: 'login' })
+  } else {
+    next()
+  }
 
-//   // 로그인을 해야만 할 때
-//   if (authRequired && !isLoggedIn) {
-//     next ({ name: 'Login' })
-//   } else {
-//     next()
-//   }
-//   authRequired && !isLoggedIn ? next({ name: 'Login' }) : next()
-
-// })
-
-// // 라우터 이동이 끝나고 해야하는 일들
-// router.afterEach(() => {
-//   console.log("router moved")
-// })
+  if (!isAuthRequired && isLoggedIn) {
+    next({ name: 'home'})
+  }
+})
 
 export default router

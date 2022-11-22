@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <!-- movieDetail이 영화정보 -->
     <!-- <transition  
       appear
@@ -106,7 +106,7 @@
   }
   </script>
   
-  <style>
+<style>
   .fade-enter-from,
   .fade-enter-to {
     opacity: 0;
@@ -127,4 +127,4 @@
   background-repeat: no-repeat;
   height:150vh;
 }
-  </style> -->
+  </style>

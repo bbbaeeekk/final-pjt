@@ -1,12 +1,12 @@
 <template>
-  <div style="height:100vh">
-    <h1>ArticleView</h1>
+  <div id="NotFound404">
+    <h1>404 Not Found</h1>
   </div>
 </template>
 
 <script>
 export default {
-    name:'ArticleView',
+  name: 'NotFound404'
 }
 </script>
 

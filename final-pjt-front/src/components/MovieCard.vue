@@ -16,7 +16,7 @@ export default {
     methods: {
         movie_detail() {
             this.$store.dispatch('getMovieDetail',this.movie.id)
-            this.$router.push({name:'MovieDetailView', params:{movie_pk:`${this.movie.id}`}})
+            this.$router.push({name:'moviesDetail', params:{movie_pk:`${this.movie.id}`}})
         }
     },
 }
