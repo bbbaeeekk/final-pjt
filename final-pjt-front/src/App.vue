@@ -1,93 +1,96 @@
 <template>
+<div>
   <div id="app">
-    <link rel="icon" href="@/assets/영화이미지.png" type="image/x-icon"/>
-    <nav id="navbar-example2" class="navbar px-3 mb-3" style="background-color:black;">
-      <!-- 메인페이지로 가는 상단 로고 -->
-      <div>
-        <RouterLink :to="{ name: 'HomeView' }">
-          <div class="mx-auto mt-auto">
-            <img width=70px class="neumorph" :class="{grayscale:!isHovering}" @mouseover="isHovering = true" @mouseout="isHovering = false" src="@/assets/ssafy_logo.png" alt="logo to mainpage">
-          </div>
-        </RouterLink>
-      </div>
-      <b v-if="isLoggedIn">{{getUsername}} 님 환영합니다</b>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <router-link to="/" style="text-decoration:none;">홈</router-link> &nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="nav-item">
-          <router-link to="/movies" style="text-decoration:none;">영화</router-link> &nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="nav-item">
-          <router-link to="/articlelist" style="text-decoration:none;">게시판</router-link>&nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="nav-item">
-          <router-link to="/login" v-if="!isLoggedIn" style="text-decoration:none;">로그인</router-link>&nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="nav-item">
-          <router-link to="/logout" v-if="isLoggedIn" style="text-decoration:none;">로그아웃</router-link>&nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'ProfileView', params: { username: getUsername } }"
-          v-if="isLoggedIn" style="text-decoration:none;">프로필</router-link>&nbsp;&nbsp;&nbsp;
-        </li>
-      </ul>
-    </nav>
-    <router-view/>
+    <nav-bar id="nav-bar"></nav-bar>
+    <div class="body">
+      <router-view/>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-export default{
-  name:'App',
-  computed: {
-    ...mapGetters(['isLoggedIn']),
-    ...mapGetters(['getUsername']),
-  },
-  data() {
-    return {
-      isHovering: false
+  import NavBar from '@/components/home/NavBar.vue'
+
+  import { mapActions } from 'vuex'
+
+  export default {
+    name: 'App',
+    components: { NavBar },
+    methods: {
+      ...mapActions(['getCurrentUser'])
+    },
+    created() {
+      this.getCurrentUser()
+
     }
   }
-
-}
-
-
 </script>
 
-
-
 <style>
-/* html {
-  background-image:url("./assets/background_image1.jpg")
-} */
+
+html,body {
+  width: 100%;
+  height: 85vh;
+}
 
 #app {
+  width: 100%;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  /* background-image:url("./assets/background_image1.jpg") */
+  color: black;
+
 }
 
-nav {
-  padding: 30px;
+#nav-bar {
+  position: sticky;
+  z-index:1;
+  width: 100%;
+  top: 0;
 }
 
-nav a {
+/* body style */
+
+.body {
+  /* margin-top: 10vh; */
+  width: 100%;
+  height: 110vh;
+  padding: 50px;
+  /* background-color: #122333; */
+
+  /* 어두운 테마 */
+  background-color: #F9F7F7;
+  /* 밝은 테마 */
+  /* background-color: #F9F7F7; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+/* footer style */
+/*
+footer{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #dcdfdd;
+  color:#2c3e50;
   font-weight: bold;
-  color: #2c3e50;
-}
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  }
+*/
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-.neumorph3 {
-  border-radius: 13px;
-  background: #ececec;
-  box-shadow: inset 11px 11px 19px #acacac, inset -11px -11px 19px #ffffff
-}
 </style>

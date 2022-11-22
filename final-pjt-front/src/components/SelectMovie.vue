@@ -9,7 +9,7 @@
 <script>
 
 export default {
-    name:'MovieCard',
+    name:'SelectMovie',
     props: {
         'movie':Object,
     },

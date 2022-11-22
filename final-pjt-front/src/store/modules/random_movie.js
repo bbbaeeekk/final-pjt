@@ -1,5 +1,5 @@
 import axios from 'axios'
-import DRF from '@/api/drf'
+import djangourl from '@/urls/djangourl'
 // import _ from 'lodash'
 
 const state = {
@@ -20,7 +20,7 @@ const mutations = {
 
 const actions = {
     random_Movies({ commit }, movie_pk) {
-        axios.get(DRF.URL + DRF.ROUTES.get_movie_detail(movie_pk))
+        axios.get(djangourl.URL + djangourl.ROUTES.get_movie_detail(movie_pk))
         .then(res => {commit('RANDOM_MOVIES', res.data)})
         .catch(err => console.error(err))
       }
