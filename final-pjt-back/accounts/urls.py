@@ -1,14 +1,11 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    # GET -> 사용자 디테일 
-    path('profile/<username>/', views.profile),
-    path('follow/<username>/', views.follow),
+app_name = 'accounts'
 
-    # path('recommend/', views.recommend),
-    # path('newsfeed/', views.newsfeed),
-    path('wish_movies/', views.wish_movies),
-    path('my_articles/', views.my_articles),
-    path('other_articles/<username>/', views.other_articles),
+urlpatterns = [
+    path('profile/<username>/', views.profile),
+    path('profile/<username>/delete/', views.delete, name='delete'),
+    # path('<int:user_pk>/follow/', views.follow, name='follow'),
+    path('profile/<username>/follow/', views.follow, name='follow'),
 ]
