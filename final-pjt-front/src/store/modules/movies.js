@@ -30,7 +30,6 @@ const mutations = {
         // state.reviews = movieDetail.reviews
     },
     GENRE_MOVIE(state, genre_movies) {
-        console.log(genre_movies)
         state.genre_movies = genre_movies
     }
 }

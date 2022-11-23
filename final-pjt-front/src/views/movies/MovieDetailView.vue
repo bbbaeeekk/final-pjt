@@ -1,9 +1,9 @@
 <template>
   <!-- movieDetail이 영화정보 -->
-    <div class="wrapper card h-100 col row g-4 m-auto" :style="{'background-image':`url(${movieDetail.backdrop_path})`}">
+    <div class="wrapper card h-100 col row g-4" :style="{'background-image':`url(${movieDetail.backdrop_path})`}">
       <div class="container p-3 mt-3">
         <div class="container neumorph p-5">
-          <div class="row p-3 neumorph3">
+          <div class="detail row p-3 neumorph3">
             <h2><b>{{ movieDetail.title }}</b></h2>
             <div class="col-12 col-lg-4 align-items-center p-3">
               <img :src="movieDetail.poster_path" alt="" class="img-fluid">
@@ -19,9 +19,9 @@
               {{ movieDetail.overview }}
               <!-- 뒤로가기 버튼 -->
               <div>
-                <button type="button" class="btn btn-danger mt-5" style="height: 40px; width:300px;" @click="goBack">BACK</button>
-              </div>
+              <button type="button" class="btn btn-danger mt-5" style="height: 40px; width:200px;" @click="goBack">BACK</button>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -58,6 +58,8 @@
   </script>
   
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
   .fade-enter-from,
   .fade-enter-to {
     opacity: 0;
@@ -74,6 +76,21 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height:150vh;
-}
+  height:100vh;
+  }
+
+  .detail {
+    align-content: center;
+    width: 70%;
+    height: 100%;
+    border: 1px solid; 
+    padding:30px; 
+    background-color: white; 
+    color:black;
+    margin:0 auto;
+    border-radius: 20px;
+
+    font-family: 'Jua', sans-serif;
+  }
+
   </style>

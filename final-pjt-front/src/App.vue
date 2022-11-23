@@ -29,10 +29,10 @@
 
 <style>
 
-html,body {
+/* html,body {
   width: 100%;
   height: 85vh;
-}
+} */
 
 #app {
   /* background-color: black; */
@@ -54,14 +54,17 @@ html,body {
   position: sticky;
   z-index:1;
   width: 100%;
+  height:20%;
   top: 0;
 }
 
 /* body style */
 
 .body {
+  background-color:black;
+
   width: 100%;
-  height: 110vh;
+  height: 90%;
   padding: 50px;
 
   display: flex;

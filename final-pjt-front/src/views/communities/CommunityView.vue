@@ -75,7 +75,6 @@ export default {
 #create-button{
   background-color: #3282B8;
   float: right;
-  
 }
 
 #community-table{
@@ -95,6 +94,10 @@ export default {
   font-family: 'Merriweather', serif;
   font-family: 'Oleo Script', cursive;
   color: #112D4E;
+}
+
+#communityView {
+  height:100vh
 }
 
 </style>
