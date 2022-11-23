@@ -33,6 +33,16 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
+  width: 70%;
+  height: 530px;
+  border: 1px solid; 
+  padding:30px; 
+  background-color: white; 
+  color:black;
+  margin:0 auto;
+  border-radius: 20px;
+
+  font-family: 'Jua', sans-serif;
 }
 
 

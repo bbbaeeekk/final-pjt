@@ -1,11 +1,9 @@
 <template>
-  <div id="main">
+  <div id="main" class="container" style="width:800px">
     <div id="Profile-basic" class="mb-5">
       <img id="profileicon" src="../../assets/profile2.png" width="100" height="100" alt="profilelogo" class="m-3">
       <h1 align="center">{{userProfile.username}}</h1>
       <br>
-      <!-- <h5 align="center"><b-icon icon="envelope"></b-icon> {{userProfile.email}}</h5> -->
-      <!-- <b-button v-if="userProfile.username == currentUser.username" @click="userDelete(userProfile.username)">회원탈퇴</b-button> -->
       <h5  id="follow"><b-icon icon="people"></b-icon> 팔로워 {{followers}} ㅤ|ㅤ <b-icon icon="people"></b-icon> 팔로잉 {{followings}}</h5>
       <!-- 내가 아닌 타유저 팔로우 기능 -->
       <b-button variant="primary" v-if="userProfile.username != currentUser.username" @click="userFollow" class="mt-2">
@@ -21,7 +19,7 @@
       <br>
       <br>
       <div id="profile-article">
-        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">내가 작성한 게시글 🖊️</h5>
+        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">나의 게시글</h5>
         <h5 v-else style="float: left;">{{userProfile.username}}가 작성한 게시글 🖊️ </h5>
         <template v-if="userArticleList == []">
           아직 작성한 게시글이 없습니다.
@@ -38,12 +36,6 @@
           :items="userArticleList"
           style="text-align:center;">
           </b-table>
-          <!-- <b-pagination align="center"
-            v-model="currentArticlePage"
-            :total-rows="articleRows"
-            :per-page="perPage"
-            aria-controls="profile-article-table">
-          </b-pagination> -->
         </template>
       </div>
 
@@ -53,8 +45,8 @@
 
       <!-- 내가 쓴 댓글 -->
       <div id="profile-comment">
-        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">내가 작성한 댓글 💬</h5>
-        <h5 v-else style="float: left;">{{userProfile.username}}가 작성한 댓글 💬</h5>
+        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">나의 댓글</h5>
+        <h5 v-else style="float: left;">{{userProfile.username}}님의 댓글</h5>
         <br>
         <template v-if="userCommentList"> 
           <b-table id="profile-comment-table" 
@@ -67,13 +59,6 @@
             primary-key="pk"
             :items="userCommentList">
           </b-table>
-          <!-- <b-pagination
-            v-model="currentCommentPage"
-            :total-rows="commentRows"
-            :per-page="perPage"
-            aria-controls="profile-comment-table"
-            align="center">
-          </b-pagination> -->
         </template>
         <template v-if="!userCommentList">
           아직 작성한 댓글이 없습니다.
@@ -87,8 +72,8 @@
     
     <!-- 내가 추천한 게시글 -->
     <div id="profile-like">
-      <h5 v-if="userProfile.username == currentUser.username" style="float: left; color: black;">내가 추천한 게시글 😊</h5>
-      <h5 v-else style="float: left; color: black;">{{userProfile.username}}가 추천한 게시글 😊 </h5>
+      <h5 v-if="userProfile.username == currentUser.username" style="float: left; color: black;">좋아요한 게시글</h5>
+      <h5 v-else style="float: left; color: black;">{{userProfile.username}}가 좋아요한 게시글 </h5>
       <br>
       <template v-if="userLikeArticleList"> 
         <b-table id="profile-like-table" 
@@ -100,51 +85,12 @@
           @row-clicked="articleLikeOnRowClicked"
           :items="userLikeArticleList">
         </b-table>
-        <!-- <b-pagination
-          v-model="currentLikeArticlePage"
-          :total-rows="likeArticleRows"
-          :per-page="perPage"
-          aria-controls="profile-like-article-table"
-          align="center">
-        </b-pagination> -->
       </template>
 
         <template v-if="!userLikeArticleList">
           아직 추천한 게시글이 없습니다.
         </template>
     </div>
-      
-
-    
-
-
-    <!-- 내가 추천한 댓글 -->
-    <!-- <div id="profile-like-comment-list">
-    <p v-if="userProfile.username == currentUser.username">내가 추천한 댓글 </p>
-    <p v-else>{{userProfile.username}}가 추천한 댓글 </p>
-
-    <template v-if="userLikeCommentList"> 
-      <b-table id="profile-like-comment-table" 
-      :per-page="perPage" 
-      :total-rows="likeCommentRows"
-      :current-page="currentLikeCommentPage"
-      striped 
-      hover 
-      :items="userLikeCommentList">
-      </b-table>
-      <b-pagination
-      v-model="currentLikeCommentPage"
-      :total-rows="likeCommentRows"
-      :per-page="perPage"
-      aria-controls="profile-like-comment-table">
-      </b-pagination>
-    </template>
-
-    <template v-if="!userLikeCommentList">
-      {{userLikeCommentList}}
-      아직 추천한 댓글이 없습니다.
-    </template>
-    </div> -->
   </div>
 </template>
 
@@ -242,13 +188,22 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 #main{
-  font-family: 'Gowun Dodum', sans-serif;
+  width: 70%;
+  height: auto;
+  border: 1px solid; 
+  padding:30px; 
+  background-color: white; 
+  color:black;
+  margin:0 auto;
+  border-radius: 20px;
+
+  font-family: 'Jua', sans-serif;
 }
 
 #Profile-basic{
   border: 1px solid; 
   padding:30px; 
-  background-color:#F9F7F7;
+  background-color:rgb(177, 200, 236);
   color:black; 
   padding:none;
   border-radius: 10px;
@@ -258,10 +213,11 @@ export default {
 }
 
 #profile-article-table, #profile-comment-table, #profile-like-table{
-  background-color: #F9F7F7;
-  color: #112D4E;
+  background-color: rgb(177, 200, 236);
+  width: 70vh;
+  color: black;
   border: 1px solid;
-  border: 1px solid #112D4E;
-  border-color: #112D4E;
+  border: 1px solid black;
+  border-color: black;
 }
 </style>

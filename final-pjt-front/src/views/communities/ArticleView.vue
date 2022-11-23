@@ -95,6 +95,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 
 #ArticleView {
   width: 100%;
@@ -102,7 +104,19 @@ export default {
   flex-direction: column;
   justify-content:space-between;
   font-size: 20px;
-  color: #112D4E;
+  color: black;
+  font-family: 'Jua', sans-serif;
+  
+  align-content: center;
+  width: 70%;
+  height: auto;
+  border: 1px solid; 
+  padding:30px; 
+  background-color: white; 
+  color:black;
+  margin:0 auto;
+  border-radius: 20px;
+  font-family: 'Jua', sans-serif;
 }
 
 #ArticleViewTop {
@@ -113,7 +127,7 @@ export default {
 }
 
 #article-view-top-title{
-  font-size:40px;
+  font-size:30px;
   font-weight:bold;
 }
 
@@ -130,7 +144,7 @@ export default {
   align-items: flex-start;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #F9F7F7;
+  background-color: white;
 }
 
 #like-button{
@@ -179,4 +193,3 @@ export default {
   margin-bottom: 5px;  
 }
 </style>
-

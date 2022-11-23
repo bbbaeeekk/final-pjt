@@ -6,6 +6,7 @@ const state = {
     MovieDatas:[],
     movieDetail: [],
     genre_movies: [],
+    searchedMovies: [],
 }
 
 const getters = {
@@ -17,7 +18,11 @@ const getters = {
     },
     genre_movies(state) {
         return state.genre_movies
-    }
+    },
+    searchedMovies(state) {
+        return state.searchedMovies
+    },
+
 }
 
 const mutations = {
@@ -31,7 +36,11 @@ const mutations = {
     },
     GENRE_MOVIE(state, genre_movies) {
         state.genre_movies = genre_movies
-    }
+    },
+    SET_SEARCHED_MOVIES(state, searchedMovies) {
+        state.searchedMovies = searchedMovies
+    },
+
 }
 
 const actions = {
@@ -48,6 +57,12 @@ const actions = {
     genre_movie({commit}, genre_movies) {
         commit('GENRE_MOVIE', genre_movies)
     },
+    searchMovies({ getters, commit }, query) {
+        const movies = getters.movies
+        const searchedMovies = movies.filter(movie => movie.title.includes(query.trim()))
+        commit('SET_SEARCHED_MOVIES', searchedMovies)
+    },
+
 }
 
 export default {

@@ -1,6 +1,7 @@
 <template>
-  <div id="communityView">
-    <h1 id="community-title">Community🖊️</h1>
+  <div id="communityView" class="container" style="width: 1000px;">
+    <h1 id="community-title">커뮤니티</h1>
+    
     <router-link :to="{ name:'articleCreate' }">
       <b-button id="create-button" class="m-3">새 글 작성 <b-icon icon="pencil"></b-icon></b-button> 
     </router-link>
@@ -42,10 +43,10 @@ export default {
     return {
       currentPage: 1,
       perPage: 5,
-      fields: [{key: 'pk',label: '번호'},
-      {key: 'user.username',label: '작성자'},
-      {key: 'title',label: '제목'},
-      {key: 'created_at', label: '작성일'},
+      fields: [{key: 'pk',label: '번 호'},
+      {key: 'user.username',label: '작 성 자'},
+      {key: 'title',label: '제 목'},
+      {key: 'created_at', label: '작 성 일'},
       ]
     }
   },
@@ -71,19 +72,19 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 #create-button{
-  background-color: #3282B8;
+  background-color: #170572;
   float: right;
 }
 
 #community-table{
-  color: #112D4E;
-  border-style: solid;
-  border: 3px solid #112D4E;
-  border-color: #112D4E;
-  background-color: #F9F7F7;
-  font-family: 'Gowun Dodum', sans-serif;
+  color: white;
+
+  border-radius: 20px;
+  background-color: #8385e3;
+  font-family: 'Jua', sans-serif;
 }
 
 #community-pagination{
@@ -91,13 +92,21 @@ export default {
 }
 
 #community-title{
-  font-family: 'Merriweather', serif;
-  font-family: 'Oleo Script', cursive;
-  color: #112D4E;
+  font-family: 'Jua', sans-serif;
+  color: black;
 }
 
-#communityView {
-  height:100vh
+#communityView{
+  align-content: center;
+  width: 300px;
+  height: 530px;
+  border: 1px solid; 
+  padding:30px; 
+  background-color: white; 
+  color:black;
+  margin:0 auto;
+  border-radius: 20px;
+  font-family: 'Jua', sans-serif;
 }
 
 </style>

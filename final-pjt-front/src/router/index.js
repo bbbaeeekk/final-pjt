@@ -7,6 +7,7 @@ import MoviesView from '@/views/movies/MovieView.vue'
 import MoviesDetail from '@/views/movies/MovieDetailView.vue'
 import RandomView from '@/views/movies/RandomView'
 import GenreMovie from '@/components/GenreMovie'
+import MovieSearchView from '@/views/movies/MovieSearchView'
 
 import SignUpView from '@/views/accounts/SignUpView.vue'
 import LoginView from '@/views/accounts/LoginView.vue'
@@ -55,6 +56,11 @@ const routes = [
       enterClass: "animate__animated animate__zoomIn",
       leaveClass: "animate__animated animate__zoomOut"
     }
+  },
+  {
+    path: '/movies/search',
+    name: 'MovieSearch',
+    component: MovieSearchView
   },
 
   //계정 기능
