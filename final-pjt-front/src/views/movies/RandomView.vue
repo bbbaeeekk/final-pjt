@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:300vh">
     <RandomMovie/>
   </div>
 </template>

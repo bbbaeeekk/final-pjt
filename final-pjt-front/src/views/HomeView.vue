@@ -1,31 +1,30 @@
 <template>
-  <div class="home" style="height:100vh">
-    <h1 style="color:crimson">장르를 선택하세요</h1>
-    <hr>
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=28>액 션</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=12>모 험</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=16>애니메이션</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=35>코미디</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=80>범 죄</button>&nbsp;&nbsp;&nbsp;
-      <br>
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=99>다큐멘터리</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=18>드라마</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=10751>가 족</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=14>판타지</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=36>역 사</button>&nbsp;&nbsp;&nbsp;
-      <br>
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=27>공 포</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=10402>음 악</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=9648>미스테리</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=10749>로맨스</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=878>S F</button>&nbsp;&nbsp;&nbsp;
-      <br>
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=10770>TV 영화</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=53>스릴러</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=10752>전 쟁</button>&nbsp;&nbsp;&nbsp;
-      <button @click="genre_pick" class="btn btn-danger avtive" data-as-toggle="button" style="width:120px" value=37>서 부</button>
+  <div class="home">
+    <h1 style="color:white">보고싶은 장르를 선택해주세요 !</h1>
+    <div class="row row-cols-4 g-4 m-auto button-list">
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('28')}" value=28>액 션</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('12')}" value=12>모 험</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('16')}" value=16>애니메이션</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('35')}" value=35>코미디</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('80')}" value=80>범 죄</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('99')}" value=99>다큐멘터리</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('18')}" value=18>드라마</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('10751')}" value=10751>가 족</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('14')}" value=14>판타지</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('36')}" value=36>역 사</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('27')}" value=27>공 포</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('10402')}" value=10402>음 악</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('9648')}" value=9648>미스테리</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('10749')}" value=10749>로맨스</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('878')}" value=878>S F</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('10770')}" value=10770>TV 영화</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('53')}" value=53>스릴러</button>&nbsp;&nbsp;&nbsp;
+      <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('10752')}" value=10752>전 쟁</button>&nbsp;&nbsp;&nbsp;
+      <!-- <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('37')}" value=37>서 부</button> -->
+    </div>
     <br>
-    <router-link to='/genre_movies' class="btn btn-primary mt-3" style="width:130px">영화보러가기</router-link>
+    <br>
+    <button @click="go_genre" class="btn btn-icon mt-3" style="text-size-adjust: 20px; width:180px; height:50px">영화보러가기!</button>
   </div>
 </template>
 
@@ -38,7 +37,7 @@
       data() {
           return {
             pick_movie:[],
-            select_movie : [],
+            select_movie:[],
             search_value:"",
           }
       },
@@ -63,7 +62,22 @@
                 }
               }
             })
+            // console.log(this.select_movie)
             this.$store.dispatch('genre_movie',this.select_movie)
+          },
+          pick_check(checked) {
+            if (this.pick_movie.includes(checked)) {
+              return true
+            } else {
+              return false
+            }
+          },
+          go_genre() {
+            if (this.pick_movie.length === 0) {
+              alert('영화를 선택해주세요!')
+            } else {
+              this.$router.push({name:'GenreMovie'})
+            }
           }
         },
       created(){
@@ -76,18 +90,41 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-.home {
-  align-content: center;
-  width: 300px;
-  height: 100%;
-  border: 1px solid; 
-  padding:30px; 
-  background-color: white; 
-  color:black;
-  margin:0 auto;
-  border-radius: 20px;
+.test {
+  width:120px;
+  height:50px;
+  font-size:20px !important;
+  border:2px solid white !important;
+  color:white !important;
+  vertical-align: middle;
+  display: table-cell;
+  margin:auto;
+}
 
+.btn-icon {
+  font-size:15px !important;
+  border:2px solid blue !important;
+  color:blue !important;
+}
+
+.home {
+  height:100vh;
+  align-content: center;
+  width: 60%;
   font-family: 'Jua', sans-serif;
 }
 
+.test:hover, .test:active {
+  background-color:#0D6EFD;
+}
+
+.btn-icon:hover, .btn-icon:active {
+  background-color: blue;
+  color:black !important;
+  /* border : 2px solid black !important; */
+}
+
+.picked {
+  background-color: blue !important;
+}
 </style>

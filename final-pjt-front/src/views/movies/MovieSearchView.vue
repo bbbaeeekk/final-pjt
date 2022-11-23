@@ -1,14 +1,13 @@
 <template>
-    <div class="container" style="height:80%">
+    <div class="container" style="height:100vh">
       <h1>Search</h1>
       <h6 class="description mb-5 underline">함 검색 해봐라</h6>
       
       <div class="input d-flex justify-content-between align-items-start" style="width: 60%">
         <input type="text" v-model="query" class="form-control my-3" @input="searchMovies(query)" @keyup.enter="searchMovies(query)"> &nbsp;&nbsp;&nbsp;
-        <!-- <button class="button neumorph" @click="searchMovies(query)">검색</button> -->
       </div>
   
-      <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
+      <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;" v-if="searchedMovies">
               <MovieCard
               v-for="movie in searchedMovies"
               :key="movie.id"

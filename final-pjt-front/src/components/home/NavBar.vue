@@ -1,7 +1,7 @@
 <template>
   <div id="NavBar">
 
-  <nav id="navbar-example2" class="navbar px-4" style="background-color:black;">
+  <nav id="navbar-example2" class="navbar px-4">
       <!-- 메인페이지로 가는 상단 로고 -->
       <div>
         <RouterLink :to="{ name: 'home' }">
@@ -11,23 +11,53 @@
         </RouterLink>
       </div>
       <ul class="nav nav-pills">
+        <!-- 홈 -->
         <li class="nav-item">
-          <router-link to="/" style="text-decoration:none;">홈&nbsp;&nbsp;&nbsp;</router-link>
+          <router-link to="/" style="text-decoration:none; vertical-align: middle; display: table-cell;"><b></b>&nbsp;</router-link>
+        </li>
+
+        <!-- 영화 목록 -->
+        <li class="nav-item">
+          <b-nav-item-dropdown
+            text="영화"
+            id="my-nav-dropdown"
+            toggle-class="nav-link-custom"
+            style="">
+          <b-dropdown-item>
+            <router-link 
+              :to="{ name: 'movies' }"
+              style="text-decoration:none;">
+              <button type="button" class="btn">전체영화</button>
+            </router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>            
+            <router-link 
+              to="/random"
+              style="text-decoration:none; width:50px;">
+              <button type="button" class="btn">랜덤영화</button>
+            </router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>
+            <router-link 
+              :to="{ name: 'MovieSearch' }"
+              style="text-decoration:none;">
+              <button type="button" class="btn">영화검색</button>
+            </router-link>
+          </b-dropdown-item>
+          </b-nav-item-dropdown>
+        </li>
+
+        <li class="nav-item">
+          <router-link to="/community" style="text-decoration:none; vertical-align: middle; display: table-cell;"><b>커뮤니티</b>&nbsp;&nbsp;&nbsp;</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/movies" style="text-decoration:none;">영화&nbsp;&nbsp;&nbsp;</router-link>
+          <router-link v-if="!isLoggedIn" to="/login" style="text-decoration:none; vertical-align: middle; display: table-cell;"><b>로그인</b>&nbsp;&nbsp;&nbsp;</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/community" style="text-decoration:none;">커뮤니티&nbsp;&nbsp;&nbsp;</router-link>
+          <router-link v-if="isLoggedIn && username " :to="{ name: 'profile', params: {username} }" style="text-decoration:none; vertical-align: middle; display: table-cell;"><b>마이페이지</b>&nbsp;&nbsp;&nbsp;</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="!isLoggedIn" to="/login" style="text-decoration:none;">로그인&nbsp;&nbsp;&nbsp;</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link v-if="isLoggedIn && username " :to="{ name: 'profile', params: {username} }" style="text-decoration:none;">MYPAGE&nbsp;&nbsp;&nbsp;</router-link>
-        </li>
-        <li class="nav-item">
-          <div v-if="isLoggedIn" @click="logout" style="color:white; cursor:pointer;" >LOGOUT</div>
+          <div class="logout" v-if="isLoggedIn" @click="logout"><b>로그아웃</b></div>
         </li>
       </ul>
     </nav>
@@ -62,6 +92,8 @@ export default {
 /* nav style */
 
 .navbar {
+  /* border: 2px solid blue; */
+  background-color:#040714;
   position: sticky;
   top: 0;
   height: 8vh;
@@ -79,6 +111,51 @@ nav a:hover{
 
 nav a:link{
   color: white;
+}
+
+.nav-item {
+  color: #e8c171;
+  transition:all.5s;
+}
+
+li {
+  display:table !important;
+}
+
+a > span {
+  color:#0D6EFD;
+  font-weight: bolder;
+}
+
+.logout {
+  cursor : pointer;
+  vertical-align : middle; 
+  display : table-cell; 
+  color : #0D6EFD;
+}
+
+.logout:hover {
+  color: #e8c171 !important;
+  transition:all.5s;
+}
+
+a > span:hover {
+  color: #e8c171 !important;
+  transition:all.5s;
+}
+
+#my-nav-dropdown__BV_toggle_:hover {
+  color: white !important;
+  transition:all.5s;
+}
+
+.dropdown-toggle {
+  background-color: transparent !important;
+}
+
+#my-nav-dropdown__BV_toggle_menu_{
+  min-width:0px !important;
+  text-align: center;
 }
 
 </style>

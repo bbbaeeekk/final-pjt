@@ -1,35 +1,36 @@
 <template>
-  <div id="communityView" class="container" style="width: 1000px;">
-    <h1 id="community-title">커뮤니티</h1>
-    
-    <router-link :to="{ name:'articleCreate' }">
-      <b-button id="create-button" class="m-3">새 글 작성 <b-icon icon="pencil"></b-icon></b-button> 
-    </router-link>
+  <div style="height:100vh">
+    <div id="communityView" class="container" style="width: 1000px;">
+      <h1 id="community-title">커뮤니티</h1>
+      
+      <router-link :to="{ name:'articleCreate' }">
+        <b-button id="create-button" class="m-3">새 글 작성 <b-icon icon="pencil"></b-icon></b-button> 
+      </router-link>
 
-    <b-table id="community-table" 
-      :per-page="perPage" 
-      :total-rows="rows"
-      :current-page="currentPage"
-      selectable
-      hover
-      :items="community" 
-      :fields="fields"
-      @row-clicked="onRowClicked"
-      primary-key="pk">
-      <template #cell(created_at)="data">
-        {{data.item.created_at.substring(0,10)}}
-      </template>
-    </b-table>
-    
-    <div id="community-pagination" class="m-3">
-      <b-pagination 
-        v-model="currentPage"
+      <b-table id="community-table" 
+        :per-page="perPage" 
         :total-rows="rows"
-        :per-page="perPage"
-        aria-controls="community-table">
-      </b-pagination>
+        :current-page="currentPage"
+        selectable
+        hover
+        :items="community" 
+        :fields="fields"
+        @row-clicked="onRowClicked"
+        primary-key="pk">
+        <template #cell(created_at)="data">
+          {{data.item.created_at.substring(0,10)}}
+        </template>
+      </b-table>
+      
+      <div id="community-pagination" class="m-3">
+        <b-pagination 
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="community-table">
+        </b-pagination>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -43,7 +44,8 @@ export default {
     return {
       currentPage: 1,
       perPage: 5,
-      fields: [{key: 'pk',label: '번 호'},
+      fields: [
+      {key: 'pk',label: '번 호'},
       {key: 'user.username',label: '작 성 자'},
       {key: 'title',label: '제 목'},
       {key: 'created_at', label: '작 성 일'},
@@ -99,7 +101,7 @@ export default {
 #communityView{
   align-content: center;
   width: 300px;
-  height: 530px;
+  height: auto;
   border: 1px solid; 
   padding:30px; 
   background-color: white; 

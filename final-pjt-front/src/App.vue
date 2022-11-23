@@ -61,8 +61,8 @@
 /* body style */
 
 .body {
-  background-color:black;
-
+  background-color:#040714;
+  background-image:url(//cnbl-cdn.bamgrid.com/assets/4354a487f44fdc56c8f404b8b4a01f26c2a20dcc40bdb380da1b5c6cedef7d6e/original);
   width: 100%;
   height: 90%;
   padding: 50px;

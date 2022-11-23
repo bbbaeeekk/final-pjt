@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <!-- <div>
             <router-link 
             to="/random"
             style="text-decoration:none;">
@@ -12,7 +12,7 @@
             style="text-decoration:none;">
             <button type="button" class="btn btn-success">영화검색</button>
             </router-link>
-        </div>
+        </div> -->
         <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
             <MovieCard
             v-for="movie in movies"
@@ -43,7 +43,6 @@
         created(){
             this.getMovies()
         },
-
     }
 
   </script>

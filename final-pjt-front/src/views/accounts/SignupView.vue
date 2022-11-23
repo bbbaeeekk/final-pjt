@@ -1,4 +1,5 @@
 <template>
+  <div id="SignUpViewDiv">
     <div id="SignUpView" style="">
       <h2 style=" color: black">회원가입</h2>
       <hr>
@@ -17,6 +18,7 @@
       계정이 있으신가요?ㅤ
       <router-link :to="{ name: 'login' }" style="color: #170572">로그인하러 가기</router-link>
     </div>
+  </div>
   </template>
   
   <script>
@@ -48,6 +50,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
   
+  #SignUpViewDiv {
+    height:100vh;
+  }
+
   #SignUpView{
     align-content: center;
     width: 300px;
