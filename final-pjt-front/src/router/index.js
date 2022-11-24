@@ -120,11 +120,13 @@ router.beforeEach((to, from, next) => {
 
   const { isLoggedIn } = store.getters
 
-  const noAuthPages = ['home','login','signup']
+  const noAuthPages = ['login','signup']
+  const noAuthPages2 = ['home','movies','login','signup']
 
   const isAuthRequired = !noAuthPages.includes(to.name)
+  const isAuthRequired2 = !noAuthPages2.includes(to.name)
 
-  if (isAuthRequired && !isLoggedIn) {
+  if (isAuthRequired2 && !isLoggedIn) {
     // alert('Require Login. Redirecting..')
     next({ name: 'login' })
   } else {

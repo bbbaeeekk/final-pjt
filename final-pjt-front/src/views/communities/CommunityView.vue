@@ -55,7 +55,6 @@ export default {
   methods:{
     ...mapActions(['communityGet', 'articleGet']),
     onRowClicked(item){
-      console.log(item.pk)
       this.$router.push({ name: 'article', params: { articlePk: item.pk } })
     }
   },
