@@ -9,7 +9,7 @@ import RandomView from '@/views/movies/RandomView'
 import GenreMovie from '@/components/GenreMovie'
 import MovieSearchView from '@/views/movies/MovieSearchView'
 
-import SignUpView from '@/views/accounts/SignUpView.vue'
+import SignupView from '@/views/accounts/SignupView.vue'
 import LoginView from '@/views/accounts/LoginView.vue'
 import ProfileView from '@/views/accounts/ProfileView.vue'
 
@@ -67,7 +67,7 @@ const routes = [
   {
     path: '/signup',
     name: 'signup',
-    component: SignUpView
+    component: SignupView
   },
   {
     path: '/login',

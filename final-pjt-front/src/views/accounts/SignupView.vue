@@ -1,6 +1,6 @@
 <template>
-  <div id="SignUpViewDiv">
-    <div id="SignUpView" style="">
+  <div id="SignupViewDiv">
+    <div id="SignupView" style="">
       <h2 style=" color: black">회원가입</h2>
       <hr>
       <account-error-list v-if="authError"></account-error-list>
@@ -26,7 +26,7 @@
   import AccountErrorList from '@/components/accounts/AccountErrorList.vue'
   
   export default {
-    name:'SignUpView',
+    name:'SignupView',
     components: { AccountErrorList },
     data(){
       return {
@@ -50,11 +50,11 @@
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
   
-  #SignUpViewDiv {
+  #SignupViewDiv {
     height:100vh;
   }
 
-  #SignUpView{
+  #SignupView{
     align-content: center;
     width: 300px;
     height: auto;
