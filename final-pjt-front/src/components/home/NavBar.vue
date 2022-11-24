@@ -37,14 +37,7 @@
               <button type="button" class="btn">랜덤영화</button>
             </router-link>
           </b-dropdown-item>
-          <b-dropdown-item>
-            <router-link 
-              :to="{ name: 'MovieSearch' }"
-              style="text-decoration:none;">
-              <button type="button" class="btn">영화검색</button>
-            </router-link>
-          </b-dropdown-item>
-          </b-nav-item-dropdown>
+        </b-nav-item-dropdown>
         </li>
 
         <li class="nav-item">
@@ -157,5 +150,27 @@ a > span:hover {
   min-width:0px !important;
   text-align: center;
 }
+
+.input {
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    background: #f5f5f5;
+    box-shadow: 5px 8px 10px #d1d1d1, -5px -8px 10px #fff;
+    color: #bfbfbf;
+    transition:0.5s;
+  }
+  
+  input:hover 
+  {
+    box-shadow: 5px 8px 10px #fff, 5px -8px 5px #d1d1d1;
+  }
 
 </style>
