@@ -1,10 +1,10 @@
 <template>
-  <div id="main" class="container" style="width:800px">
+  <div id="main" class="container">
     <div id="Profile-basic" class="mb-5">
       <img id="profileicon" src="../../assets/profile2.png" width="100" height="100" alt="profilelogo" class="m-3">
       <h1 align="center">{{userProfile.username}}</h1>
       <br>
-      <h5  id="follow"><b-icon icon="people"></b-icon> 팔로워 {{followers}} ㅤ|ㅤ <b-icon icon="people"></b-icon> 팔로잉 {{followings}}</h5>
+      <h5  id="follow">팔로워 수 : {{followers}} ㅤㅤ 팔로잉 수 : {{followings}}</h5>
       <!-- 내가 아닌 타유저 팔로우 기능 -->
       <b-button variant="primary" v-if="userProfile.username != currentUser.username" @click="userFollow" class="mt-2">
         {{followButton}}
@@ -14,15 +14,15 @@
 
     <!-- 내가 쓴 게시글 -->
     <div id="Profile-main">
-      <div style="background-color: #DBE2EF; text-align: left; font-size: 20px;">작성한 게시글 {{ userArticleList.length }} ㅤ|ㅤ 작성한 댓글 {{ userCommentList.length }} </div>
+      <div style="background-color: #DBE2EF; text-align: left; font-size: 20px;">ㅤㅤ작성한 게시글 {{ userArticleList.length }} ㅤ|ㅤ 작성한 댓글 {{ userCommentList.length }} </div>
       <hr style="color: black; margin: 0px;">
-      <br>
-      <br>
+      <br><br>
       <div id="profile-article">
-        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">나의 게시글</h5>
-        <h5 v-else style="float: left;">{{userProfile.username}}가 작성한 게시글 🖊️ </h5>
-        <template v-if="userArticleList == []">
-          아직 작성한 게시글이 없습니다.
+        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">ㅤ나의 게시글</h5>
+        <h5 v-else style="float: left;">ㅤ{{userProfile.username}}님의 게시글</h5>
+        <br>
+        <template v-if="userArticleList.length===0"><br>
+          ㅤ아직 작성한 게시글이 없습니다.
         </template>
         <template v-else> 
           <b-table id="profile-article-table" 
@@ -40,15 +40,18 @@
       </div>
 
       <br>
-      <hr>
+      
       <br>
 
       <!-- 내가 쓴 댓글 -->
       <div id="profile-comment">
-        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">나의 댓글</h5>
-        <h5 v-else style="float: left;">{{userProfile.username}}님의 댓글</h5>
+        <h5 v-if="userProfile.username == currentUser.username" style="float: left;">ㅤ나의 댓글</h5>
+        <h5 v-else style="float: left;">ㅤ{{userProfile.username}}님의 댓글</h5>
         <br>
-        <template v-if="userCommentList"> 
+        <template v-if="userCommentList.length===0"><br>
+          ㅤ아직 작성한 댓글이 없습니다.
+        </template>
+        <template v-else> 
           <b-table id="profile-comment-table" 
             :fields="commentFields"
             :per-page="perPage" 
@@ -60,22 +63,22 @@
             :items="userCommentList">
           </b-table>
         </template>
-        <template v-if="!userCommentList">
-          아직 작성한 댓글이 없습니다.
-        </template>
       </div>
       <br>
     </div>
 
-    <hr style="color: black;">
     <br>
     
     <!-- 내가 추천한 게시글 -->
     <div id="profile-like">
-      <h5 v-if="userProfile.username == currentUser.username" style="float: left; color: black;">좋아요한 게시글</h5>
-      <h5 v-else style="float: left; color: black;">{{userProfile.username}}가 좋아요한 게시글 </h5>
+      <h5 v-if="userProfile.username == currentUser.username" style="float: left; color: black;">ㅤ좋아하는 게시글</h5>
+      <h5 v-else style="float: left; color: black;">ㅤ{{userProfile.username}}님이 좋아하는 게시글 </h5>
       <br>
-      <template v-if="userLikeArticleList"> 
+      
+      <template v-if="userLikeArticleList.length===0"><br>
+        ㅤ좋아하는 게시글이 없습니다.
+      </template>
+      <template v-else> 
         <b-table id="profile-like-table" 
           :fields="articleLikeFields"
           :per-page="perPage"
@@ -86,10 +89,6 @@
           :items="userLikeArticleList">
         </b-table>
       </template>
-
-        <template v-if="!userLikeArticleList">
-          아직 추천한 게시글이 없습니다.
-        </template>
     </div>
   </div>
 </template>
@@ -105,20 +104,20 @@ export default {
       currentCommentPage: 1,
       currentLikeArticlePage: 1,
       currentLikeCommentPage: 1,
-      perPage: 5,
+      perPage: 10,
       articleField: [
         {key: 'pk', thClass: 'd-none', tdClass: 'd-none'},
-        {key: 'title',label: '제목'},
+        {key: 'title',label: '* 게시글 목록 *'},
         {key: 'content', thClass: 'd-none', tdClass: 'd-none'},
       ],
       commentFields: [
         {key: 'pk', thClass: 'd-none', tdClass: 'd-none'},
-        {key: 'content', label:'내용'},
+        {key: 'content', label:'* 댓글 목록 *'},
         {key: 'article', thClass: 'd-none', tdClass: 'd-none'}
       ],
       articleLikeFields: [
         {key: 'pk', thClass: 'd-none', tdClass: 'd-none'},
-        {key: 'title', label:'제목'},
+        {key: 'title', label:'* 좋아요한 게시글 목록 *'},
         {key: 'content', thClass: 'd-none', tdClass: 'd-none'},
       ],
     }
@@ -188,7 +187,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 #main{
-  width: 70%;
+  width:700px;
   height: auto;
   border: 1px solid; 
   padding:30px; 
@@ -207,17 +206,16 @@ export default {
   color:black; 
   padding:none;
   border-radius: 10px;
+  border-color:white;
 }
 #Profile-basic, #Profile-main{
   color: black;
 }
 
 #profile-article-table, #profile-comment-table, #profile-like-table{
-  background-color: rgb(177, 200, 236);
-  width: 70vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
   color: black;
-  border: 1px solid;
-  border: 1px solid black;
-  border-color: black;
+
 }
 </style>

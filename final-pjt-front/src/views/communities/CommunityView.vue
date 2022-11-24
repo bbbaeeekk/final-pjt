@@ -82,10 +82,10 @@ export default {
 }
 
 #community-table{
-  color: white;
+  color: black;
 
   border-radius: 20px;
-  background-color: #8385e3;
+  background-color: rgb(177, 200, 236);
   font-family: 'Jua', sans-serif;
 }
 

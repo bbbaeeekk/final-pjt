@@ -2,14 +2,14 @@
   <div id="CommentList">
     <template v-if="!isUpdating"> 
       <div class="bubble mb-3"> 
-        <p class="m-3">{{comment.content}}</p>         
+        <p  style="font-size:smaller" class="m-3">{{comment.content}}</p>         
       </div>
     </template>
-    <div>
-      <h5><b-icon icon="person-fill"></b-icon> {{comment.user.username}}</h5>
-    </div>
+   
+      <a style="font-size:smaller"><b-icon icon="person-fill"></b-icon> {{comment.user.username}}</a>ㅤ
+   
     
-    
+
 
       <template v-if="comment.user.username == currentUser.username" >
         <template v-if="isUpdating">
@@ -82,7 +82,7 @@ export default {
 .bubble
 {
 position: relative;
-width: 500px;
+width: 70%;
 height: 50px;
 padding: 0px;
 background: #e2dfdf;

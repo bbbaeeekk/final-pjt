@@ -1,10 +1,11 @@
 <template>
+  <div style="height:130vh">
   <div id="ArticleView">
     <div id="ArticleViewTop">
       <span id="article-view-top-title">{{article.title}}</span>
       <span id="article-view-top-date">작성일: {{createdDate}}ㅤ | ㅤ수정일: {{updatedDate}}</span>
       <router-link :to="{ name: 'profile', params: goToUserPRofile }">
-        <b-button id="user-button" variant="light"><b-icon icon="person-fill"></b-icon> {{article.user.username}}</b-button>  
+        <b-button id="user-button" variant="light">작성자 : {{article.user.username}}</b-button>  
       </router-link>
     </div>
     <hr>
@@ -12,29 +13,29 @@
     <div id="ArticleViewMiddle">
       <p>{{article.content}}</p>
     </div>
-    <hr>
+    
 
     <div id="article-view-middle-buttons">
       <b-button id="like-button" v-if="!isAuthor" @click="articleLike(article.pk)">{{isLikedButton}}  {{article.like_users.length}}</b-button>
       
       <router-link v-if="isAuthor" :to="{ name:'ArticleUpdate', params:{articlePk} }">
-        <b-button id="article-view-update-button" class="m-3">수정하기 <b-icon icon="pencil-square"></b-icon></b-button>
+        <b-button id="article-view-update-button" class="m-3"><b-icon icon="pencil-square"></b-icon></b-button>
       </router-link>
 
-      <b-button v-if="isAuthor" variant="danger" id="article-view-delete-button" type="submit" @click="articleDelete(articlePk)">삭제하기 <b-icon icon="trash"></b-icon></b-button>
+      <b-button v-if="isAuthor" variant="danger" id="article-view-delete-button" type="submit" @click="articleDelete(articlePk)"><b-icon icon="trash"></b-icon></b-button>
 
       <router-link :to="{ name: 'community' }">
-        <b-button id="article-view-back-button" class="m-3">글 목록 <b-icon icon="list-task"></b-icon></b-button>
+        <b-button id="article-view-back-button" class="m-3"><b-icon icon="list-task"></b-icon></b-button>
         </router-link>
     </div>
-    <hr>
+
     <div id="ArticleViewBottom">
       <article-and-comment-error-list v-if="articleAndCommentError"> </article-and-comment-error-list>
       <comment-list v-for="comment in article.comments" :key="comment.pk" :comment="comment"></comment-list>
-      <br>
+      
       <comment-create-form></comment-create-form>
     </div>
-    
+  </div>
   </div>
 </template>
 
@@ -99,7 +100,7 @@ export default {
 
 
 #ArticleView {
-  width: 100%;
+  width: 700px !important;
   display: flex;  
   flex-direction: column;
   justify-content:space-between;
@@ -153,18 +154,18 @@ export default {
 }
 
 #article-view-update-button{
-  width:120px; height:50px;
-  background-color: #3282B8;
+  width:50px; height:50px;
+  background-color: rgb(20, 20, 207);
 }
 
 #article-view-delete-button{
-  width:120px; height:50px;
-  background-color: #B83232;
+  width:50px; height:50px;
+  background-color: rgb(181, 18, 18);
 }
 
 #article-view-back-button{
-  width:120px; height:50px;
-  background-color: #5fb832;
+  width:50px; height:50px;
+  background-color: #458b22;
 }
 
 #article-view-middle-buttons{

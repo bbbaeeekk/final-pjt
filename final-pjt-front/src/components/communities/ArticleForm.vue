@@ -1,7 +1,7 @@
 <template>
-  <div id="ArticleForm">
-    <h1 id="article-form-title-create" v-if="action == '작성'"> 게시글 작성하기 <b-icon icon="pencil-fill"></b-icon></h1> 
-    <h1 id="article-form-title-update" v-else-if="action == '수정'"> 게시글 수정하기 <b-icon icon="pencil-fill"></b-icon></h1> 
+  <div id="ArticleForm" >
+    <h1 id="article-form-title-create" v-if="action == '작성'"> 게시글 작성</h1> 
+    <h1 id="article-form-title-update" v-else-if="action == '수정'"> 게시글 수정></h1> 
     <hr style="color: #112D4E;">
     <br>
 
@@ -21,9 +21,8 @@
 
       <router-link :to="{ name:'article', params:{articlePk:article.pk} }">
         <b-button v-if="action == '수정'" id="article-form-cancel-button">취소</b-button>
-      </router-link>
+      </router-link><br>
     </b-form>
-
     
 
   </div>
@@ -78,22 +77,22 @@ export default {
 
 #article-form-title-create, #article-form-title-update{
   text-align: start;
-  color: #112D4E;
+  color: black;
 }
 
 #article-form-title-text, #article-form-content-text{
   text-align: start;
-  color: #112D4E;
+  color: black;
 }
 
 #article-form-submit-button {
-  width:100px; height:50px;
-  background-color: #3282B8;
+  width:100px; height:40px;
+  background-color: rgb(20, 20, 207);
 
 }
 
 #article-form-cancel-button{
-  width:100px; height:50px;
-  background-color: #B83232;
+  width:100px; height:40px;
+  background-color: rgb(181, 18, 18);
 }
 </style>

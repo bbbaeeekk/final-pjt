@@ -1,8 +1,10 @@
 <template>
-  <div id="ArticleUpdateView">
+  <div style="height:100vh">
+  <div id="ArticleUpdateView" >
     <article-and-comment-error-list v-if="articleAndCommentError"> </article-and-comment-error-list>
     <article-form v-if="isArticle" :article="article" action="수정"></article-form>
   </div>
+</div>
 </template>
 
 <script>
@@ -28,7 +30,7 @@ export default {
 
 <style scoped>
 #ArticleUpdateView {
-  width: 100%;
+  width: 700px !important;
   display: flex;
   flex-direction: column;
   justify-content:flex-start;

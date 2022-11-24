@@ -1,8 +1,10 @@
 <template>
-  <div id="ArticleCreateView">
+  <div style="height:100vh">
+  <div id="ArticleCreateView" >
     <article-and-comment-error-list v-if="articleAndCommentError"> </article-and-comment-error-list>
     <article-form :article="article" action="작성"></article-form>
   </div>
+</div>
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
 
 <style scoped>
 #ArticleCreateView {
-  width: 100%;
+  width: 700px !important;
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
