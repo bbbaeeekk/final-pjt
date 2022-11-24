@@ -1,92 +1,74 @@
-# final-pjt
+# 123weeks Final_pjt
+<img src="https://img.shields.io/badge/Python 3.9-3766AB?style=flat-square&logo=Python&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/django 3.2-092E20?style=flat-square&logo=django&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/Node.js 1.6-339933?style=flat-square&logo=Node.js&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/>
 
+&nbsp;
+## i. 팀원 및 업무 분담
+---
+### 양석주
+- 팀장
+- Front(Vue, html, css) 페이지 전반 구현
+- Detail, Random, Home 등 Vue 컴포넌트 기능 구현
+- 데이터 추출 및 정제
 
+### 백현웅
+- Server(Django) 모델 생성 등 로직 구현
+- Community 및 Account 등 Vue 컴포넌트 기능 구현 
+- html, css 기능 구현
 
-## Getting started
+&nbsp;
+## ii. 목표 서비스 구현 및 실제 구현 정도
+---
+### 목표 서비스 구현
+- 사용자가 선택한 장르, 찜한 영화, 검색기록 등 사용자의 데이터를 활용한 머신러닝 알고리즘으로 사용자별 추천 영화 기능 구현
+### 실제 구현 정도
+- Vue 라이브러리인 lodash를 활용한 랜덤영화추천, 장르별 영화 검색, 텍스트로 영화 검색등을 구현함.
+- 머신러닝 알고리즘은 추후 학습하여 구현해 볼 예정임.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+&nbsp;
+## iii. 데이터베이스 모델링 (ERD)
+---
+&nbsp;
+<img src="./readme_image/erd_image.png" title="erd_image"/>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://lab.ssafy.com/didtjrwn10/final-pjt.git
-git branch -M master
-git push -uf origin master
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://lab.ssafy.com/didtjrwn10/final-pjt/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+&nbsp;
+## iv. 영화 추천 알고리즘에 대한 기술적 설명
+---
+1. 랜덤 영화 추천
+   - lodash 라이브러리를 활용하여 전체 영화 목록에서 랜덤으로 한개의 영화를 추천해주고, 버튼을 활용하여 다른 랜덤영화를 볼 수 있도록 구현함.
+    &nbsp;
+    <img src="./readme_image/랜덤영화_image.png" title="random_image"/>
+    &nbsp;
+2. 장르별 영화 추천
+   - 사용자가 장르를 선택하면 해당 장르에 해당하는 영화목록을 반환하여 사용자가 원하는 장르의 영화를 볼 수 있도록 구혐함.
+    &nbsp;
+    <img src="./readme_image/장르_image.png" title="genre_image"/>
+&nbsp;
+## v. 서비스 대표 기능에 대한 설명
+---
+1. 영화 검색 기능
+   - 사용자가 텍스트를 입력할 때 마다 실시간으로 입력값을 보내고 store에서는 해당 검색어가 들어간 영화목록을 반환하여 검색 페이지에서 해당 텍스트가 포함된 영화목록을 사용자에게 보여준다.
+   - input 창에 한글을 입력했을 때 한템포 늦게 동작하는 경우가 발생하는데 한글이 2byte로 이루어져 있기 때문이라고 하여 공식문서를 참고하여 v-model이 아닌 input 디렉티브를 사용해서 $event.target.value를 payload로 보내주었음.
+    &nbsp;
+    <img src="./readme_image/검색_image.png" title="search_image"/>
+   -  
+2. 커뮤니티
+   - 글 작성, 한 페이지당 5개의 게시글, 수정, 삭제, 목록으로 돌아가기, 게시글 좋아요, 댓글작성 ...
+    &nbsp;
+    <img src="./readme_image/커뮤니티_image.jpg" title="community_image"/>
+3. 마이페이지
+   - 팔로워수, 작성한 댓글, 나의게시글, 나의 댓글, 좋아하는 댓글 등 이동 기능...
+    &nbsp;
+    <img src="./readme_image/마이페이지_image.png" title="mypage_image"/>
+&nbsp;
+## vi. 후기
+---
+### 양석주
+- 
+### 백현웅
+- 

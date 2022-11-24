@@ -1,7 +1,7 @@
 <template>
   <div id="movie_view">
     <div class="input d-flex justify-content-between align-items-start" style="width: 60%">
-        <input type="text" v-model="query" class="form-control my-3" @input="searchMovies(query)" @keyup.enter="searchMovies(query)"> &nbsp;&nbsp;&nbsp;
+        <input type="text" class="form-control my-3" @input="searchMovies($event.target.value)" @keyup.enter="searchMovies(query)"> &nbsp;&nbsp;&nbsp;
     </div>
     <div v-if="searchedMovies.length===0">
         <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
@@ -33,7 +33,7 @@
         components: {MovieCard},
         data(){
             return {
-                query: '',
+                // query: '',
             }
         },
         computed: {
