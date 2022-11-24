@@ -1,18 +1,9 @@
 <template>
-    <div>
-        <!-- <div>
-            <router-link 
-            to="/random"
-            style="text-decoration:none;">
-            <button type="button" class="btn btn-success">랜덤영화</button>
-            </router-link>
-
-            <router-link 
-            :to="{ name: 'MovieSearch' }"
-            style="text-decoration:none;">
-            <button type="button" class="btn btn-success">영화검색</button>
-            </router-link>
-        </div> -->
+  <div id="movie_view">
+    <div class="input d-flex justify-content-between align-items-start" style="width: 60%">
+        <input type="text" v-model="query" class="form-control my-3" @input="searchMovies(query)" @keyup.enter="searchMovies(query)"> &nbsp;&nbsp;&nbsp;
+    </div>
+    <div v-if="searchedMovies.length===0">
         <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
             <MovieCard
             v-for="movie in movies"
@@ -21,6 +12,16 @@
             />
         </div>
     </div>
+    <div v-else>
+        <div class="row row-cols-1 row-cols-xl-5 row-cols-md-4 row-cols-sm-2 g-4 m-auto" style="width:80%;">
+            <MovieCard
+            v-for="movie in searchedMovies"
+            :key="movie.id"
+            :movie="movie"
+            />
+        </div>
+    </div>
+  </div>
   </template>
   
   <script>
@@ -32,13 +33,14 @@
         components: {MovieCard},
         data(){
             return {
+                query: '',
             }
         },
         computed: {
-            ...mapGetters(['movies'])
+            ...mapGetters(['movies','searchedMovies'])
         },
         methods: {
-            ...mapActions(['getMovies',]),
+            ...mapActions(['getMovies','searchMovies']),
         },
         created(){
             this.getMovies()
@@ -48,5 +50,8 @@
   </script>
   
   <style>
-  
+  #movie_view {
+    min-height:100vh;
+    height:100%;
+  }
   </style>

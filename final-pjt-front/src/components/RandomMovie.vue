@@ -20,7 +20,14 @@
                   {{ genre.name }}
                 </span></b></h6>
                 <h6 class="my-3"><b>평점 : {{ random_movies.vote_avg }}</b></h6>
-                {{ random_movies.overview }}
+                <div>
+                  <span v-if="random_movies.overview !==''">
+                    {{ random_movies.overview }}
+                  </span>
+                  <span v-if="random_movies.overview ===''">
+                    영화소개가 없습니다😢
+                  </span>
+                </div>
               </div>
             </div>
           </div>

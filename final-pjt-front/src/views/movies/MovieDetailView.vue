@@ -18,7 +18,14 @@
                   {{ genre.name }}
                 </span></b></h6>
                 <h6 class="my-3"><b>평점 : {{ movieDetail.vote_avg }}</b></h6>
-                {{ movieDetail.overview }}
+                <div>
+                  <span v-if="movieDetail.overview !==''">
+                    {{ movieDetail.overview }}
+                  </span>
+                  <span v-if="movieDetail.overview ===''">
+                    영화소개가 없습니다😢
+                  </span>
+                </div>
                 <!-- 뒤로가기 버튼 -->
               <div>
                 <button type="button" class="btn btn-danger mt-5" style="height: 40px; width:200px;" @click="goBack">BACK</button>

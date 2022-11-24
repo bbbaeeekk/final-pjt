@@ -6,7 +6,7 @@ const state = {
     MovieDatas:[],
     movieDetail: [],
     genre_movies: [],
-    searchedMovies: [],
+    searchedMovies:[],
 }
 
 const getters = {
@@ -27,6 +27,7 @@ const getters = {
 
 const mutations = {
     GET_MOVIES(state, movieDatas) {
+        state.searchedMovies = []
         state.MovieDatas = movieDatas
     },
     GET_MOVIE_DETAIL(state, movieDetail) {

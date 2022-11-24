@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 style="color:white">보고싶은 장르를 선택해주세요 !</h1>
+    <h1 style="color:white">원하는 장르를 선택해주세요 !</h1>
     <div class="row row-cols-4 g-4 m-auto button-list">
       <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('28')}" value=28>액 션</button>&nbsp;&nbsp;&nbsp;
       <button @click="genre_pick" class="btn avtive test" :class="{'picked':pick_check('12')}" value=12>모 험</button>&nbsp;&nbsp;&nbsp;
@@ -24,7 +24,9 @@
     </div>
     <br>
     <br>
-    <button @click="go_genre" class="btn btn-icon mt-3" style="text-size-adjust: 20px; width:180px; height:50px">영화보러가기!</button>
+    <div>
+      <button @click="go_genre" class="btn btn-icon">영화보러가기!</button>
+    </div>
   </div>
 </template>
 
@@ -101,8 +103,11 @@
   margin:auto;
 }
 
-.btn-icon {
-  font-size:15px !important;
+.btn-icon { 
+  margin-right: 17px;
+  width:271px; 
+  height:60px;
+  font-size:24px !important;
   border:2px solid blue !important;
   color:blue !important;
 }
