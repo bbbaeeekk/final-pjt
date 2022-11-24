@@ -47,7 +47,7 @@ export default {
     name : 'RandomMovie',
     methods: {
         RandomMovie() {
-          const movie_pk = _.random(1, 986)
+          const movie_pk = _.random(1, 1000)
           this.$store.dispatch('random_Movies', movie_pk)
         },
     },
